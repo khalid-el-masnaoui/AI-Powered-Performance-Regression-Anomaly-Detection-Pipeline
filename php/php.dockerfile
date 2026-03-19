@@ -14,3 +14,14 @@ RUN apt-get update && apt-get install -y \
     zip \
     unzip \
     graphviz
+
+
+WORKDIR /var/www
+ 
+# Install SPX
+RUN git clone https://github.com/NoiseByNorthwest/php-spx.git /tmp/php-spx \
+    && cd /tmp/php-spx \
+    && phpize \
+    && ./configure \
+    && make \
+    && make install
