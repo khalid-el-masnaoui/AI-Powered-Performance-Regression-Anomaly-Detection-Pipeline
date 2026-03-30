@@ -47,3 +47,14 @@ RUN pecl install apcu \
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www/html
+
+
+# Install Prometheus PHP client
+# RUN composer require promphp/prometheus_client_php
+# COPY ../src/composer.json /var/www/html/composer.json
+
+
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
+ENTRYPOINT ["entrypoint.sh"]
