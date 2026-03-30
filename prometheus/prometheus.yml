@@ -1,0 +1,18 @@
+global:
+  scrape_interval: 5s
+
+rule_files:
+  - "alerts.yml"
+
+scrape_configs:
+  - job_name: 'php-app'
+    static_configs:
+      - targets: ['nginx']
+
+  - job_name: "php-fpm"
+    static_configs:
+      - targets: ["php-fpm-exporter:9253"]
+
+  - job_name: "nginx"
+    static_configs:
+      - targets: ["nginx-exporter:9113"]
