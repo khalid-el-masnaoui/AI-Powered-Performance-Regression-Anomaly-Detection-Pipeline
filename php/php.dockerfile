@@ -42,3 +42,8 @@ RUN echo "process.dumpable = yes" >> /usr/local/etc/php-fpm.d/www.conf
 # Install APCu for caching (for prometheus client)
 RUN pecl install apcu \
     && docker-php-ext-enable apcu
+
+# Install Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+WORKDIR /var/www/html
