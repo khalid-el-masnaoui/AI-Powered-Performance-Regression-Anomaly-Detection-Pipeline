@@ -1,0 +1,9 @@
+groups:
+- name: slow-endpoints
+  rules:
+  - alert: SlowEndpoint
+    expr: |
+      histogram_quantile(0.95,
+        sum(rate(app_request_duration_seconds_bucket[1m])) by (le, route)
+      ) > 1
+    for: 1m
