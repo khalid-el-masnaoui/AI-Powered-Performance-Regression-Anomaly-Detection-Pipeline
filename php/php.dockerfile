@@ -58,3 +58,5 @@ COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
 ENTRYPOINT ["entrypoint.sh"]
+# The default command to run after the entrypoint
+CMD ["php-fpm"]
