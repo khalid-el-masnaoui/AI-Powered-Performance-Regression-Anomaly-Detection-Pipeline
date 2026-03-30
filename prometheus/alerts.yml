@@ -7,3 +7,9 @@ groups:
         sum(rate(app_request_duration_seconds_bucket[1m])) by (le, route)
       ) > 1
     for: 1m
+    labels:
+      severity: critical
+      route: "{{ $labels.route }}"
+    annotations:
+      summary: "Slow endpoint: {{ $labels.route }}"
+      description: "p95: {{ $value }}"
