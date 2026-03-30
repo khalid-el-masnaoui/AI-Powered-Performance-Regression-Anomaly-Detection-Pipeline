@@ -6,3 +6,9 @@ route:
   group_by: ['alertname', 'route']
   group_wait: 0s
   group_interval: 1s
+
+receivers:
+  - name: regression
+    webhook_configs:
+      - url: ${REGRESSION_SERVICE_URL}/alert
+        send_resolved: false
