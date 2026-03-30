@@ -38,3 +38,7 @@ RUN docker-php-ext-install pdo pdo_mysql
 # Enable FPM status page
 RUN echo "pm.status_path = /status" >> /usr/local/etc/php-fpm.d/www.conf
 RUN echo "process.dumpable = yes" >> /usr/local/etc/php-fpm.d/www.conf
+
+# Install APCu for caching (for prometheus client)
+RUN pecl install apcu \
+    && docker-php-ext-enable apcu
