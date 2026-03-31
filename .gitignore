@@ -1,0 +1,4 @@
+./src/vendor
+./spx-data
+./reports
+.env
