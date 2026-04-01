@@ -32,3 +32,16 @@ function normalize_route($uri)
 }
 
 $route = normalize_route($_SERVER['REQUEST_URI']);
+
+// ---------------------------
+// Prometheus Metrics
+// ---------------------------
+$registry = new CollectorRegistry(new APC());
+
+$histogram = $registry->getOrRegisterHistogram(
+    'app',
+    'request_duration_seconds',
+    'Request duration',
+    ['method', 'route', 'status'],
+    [0.01, 0.05, 0.1, 0.3, 0.5, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 30, 60, 120, 180, 240, 300]
+);
