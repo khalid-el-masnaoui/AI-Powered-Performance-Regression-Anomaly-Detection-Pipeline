@@ -61,3 +61,17 @@ $start = microtime(true);
 if (isset($_GET['delay'])) {
     usleep($_GET['delay'] * 1000000);
 }
+
+// Fake routing (replace with your framework)
+$path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+
+if ($path === '/') {
+    usleep(rand(10000, 200000)); // simulate latency
+    echo "Home";
+} elseif ($path === '/api/users') {
+    usleep(rand(50000, 500000)); // slower endpoint
+    echo json_encode(["users" => []]);
+} else {
+    http_response_code(404);
+    echo "Not Found";
+}
