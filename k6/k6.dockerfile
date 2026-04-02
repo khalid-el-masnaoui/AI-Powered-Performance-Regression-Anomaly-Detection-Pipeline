@@ -9,3 +9,9 @@ RUN apk update && \
     apk add --no-cache bash && \
     apk add --no-cache curl &&  \
     apk add --no-cache jq
+
+# Switch back to the k6 user for security
+#USER k6
+
+# Set bash as our entrypoint
+ENTRYPOINT ["/bin/bash", "-c"]
