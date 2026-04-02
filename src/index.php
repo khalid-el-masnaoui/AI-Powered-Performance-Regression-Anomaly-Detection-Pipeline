@@ -52,3 +52,12 @@ $counter = $registry->getOrRegisterCounter(
     'Total requests',
     ['method', 'route', 'status']
 );
+
+// ---------------------------
+// Request handling
+// ---------------------------
+$start = microtime(true);
+
+if (isset($_GET['delay'])) {
+    usleep($_GET['delay'] * 1000000);
+}
