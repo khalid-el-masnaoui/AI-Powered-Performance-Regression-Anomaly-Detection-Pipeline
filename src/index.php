@@ -75,3 +75,21 @@ if ($path === '/') {
     http_response_code(404);
     echo "Not Found";
 }
+
+$status = http_response_code();
+$duration = microtime(true) - $start;
+
+// ---------------------------
+// Record metrics
+// ---------------------------
+$histogram->observe($duration, [
+    $_SERVER['REQUEST_METHOD'],
+    $route,
+    $status
+]);
+
+$counter->inc([
+    $_SERVER['REQUEST_METHOD'],
+    $route,
+    $status
+]);
