@@ -9,3 +9,18 @@ ROUTES=(
   "/"
   "/api/users"
 )
+
+#ROUTES=$(shell curl -s $NGINX_URL/routes)
+
+sleep 10
+
+echo "Starting baseline generation..."
+
+# -----------------------------
+# 1. Warmup
+# -----------------------------
+echo "warmup phase..."
+for i in {1..20}; do
+  curl -s $NGINX_URL/ > /dev/null
+  curl -s $NGINX_URL/api/users > /dev/null
+done
