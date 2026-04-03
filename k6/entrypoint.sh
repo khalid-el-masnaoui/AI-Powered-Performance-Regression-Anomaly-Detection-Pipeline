@@ -24,3 +24,14 @@ for i in {1..20}; do
   curl -s $NGINX_URL/ > /dev/null
   curl -s $NGINX_URL/api/users > /dev/null
 done
+
+sleep 5
+
+# -----------------------------
+# 2. Load phase
+# -----------------------------
+echo "Running k6 baseline load..."
+k6 run /scripts/baseline.js
+
+echo "⏳ Waiting for Prometheus to collect data..."
+sleep 5
