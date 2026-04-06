@@ -59,3 +59,16 @@ for route in "${ROUTES[@]}"; do
   P95=$(curl -sG "$PROM_URL/api/v1/query" \
     --data-urlencode "query=$P95_QUERY" \
     | jq -r '.data.result[0].value[1]')
+
+  # ---------------------------------------------------
+  # P99
+  # ---------------------------------------------------
+
+  P99_QUERY="histogram_quantile(
+    0.99,
+    sum(rate(app_request_duration_seconds_bucket{route=\"$route\"}[2m])) by (le)
+  )"
+
+  P99=$(curl -sG "$PROM_URL/api/v1/query" \
+    --data-urlencode "query=$P99_QUERY" \
+    | jq -r '.data.result[0].value[1]')
