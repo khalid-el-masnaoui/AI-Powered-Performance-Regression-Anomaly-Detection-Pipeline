@@ -1,0 +1,2 @@
+k6 --> (installed locally) You can install k6 by following the instructions on the official website: https://k6.io/docs/getting-started/installation/.
+jq --> (installed locally) You can install jq by following the instructions on the official website: https://stedolan.github.io/jq/download/.
