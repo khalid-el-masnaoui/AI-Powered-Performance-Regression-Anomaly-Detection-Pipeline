@@ -133,3 +133,11 @@ for route in "${ROUTES[@]}"; do
     | jq -r '.data.result[0].value[1]')
 
   
+  # ---------------------------------------------------
+  # VALIDATION
+  # ---------------------------------------------------
+
+  if [ "$P95" == "null" ] || [ -z "$P95" ]; then
+    echo "⚠️ No p95 data for $route"
+    continue
+  fi
