@@ -10,3 +10,13 @@ const routes = [
   '/',
   '/api/users',
 ];
+
+//const routes=$(shell curl -s http://localhost:8080/routes)
+
+export default function () {
+  routes.forEach(route => {
+    http.get(`http://localhost:8080${route}`);
+  });
+
+  sleep(1);
+}
