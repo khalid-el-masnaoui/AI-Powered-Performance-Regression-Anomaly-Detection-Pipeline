@@ -183,3 +183,11 @@ for route in "${ROUTES[@]}"; do
 done
 
 echo "✅ Baseline generation complete"
+
+# -----------------------------
+# 4. Create regression by stimulating slow requests (you can replace this with any other method to create regressions, e.g., deploying a new version with a known performance issue)
+# -----------------------------
+echo "Stimulating slow requests..."
+k6 run /scripts/ingest_slow_requests.js
+
+echo "✅ k6 tests completed"
