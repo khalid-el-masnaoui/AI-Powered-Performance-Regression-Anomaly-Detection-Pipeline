@@ -10,3 +10,16 @@ export const options = {
     },
   },
 };
+
+export default function () {
+  // Fast endpoints (baseline)
+  http.get('http://localhost:8080/');
+  http.get('http://localhost:8080/api/users');
+
+  // Inject slow request every ~3 iterations
+  if (__ITER % 3 === 0) {
+    http.get('http://localhost:8080/api/users?delay=1.5'); // simulate 1.5s latency
+  }
+
+  sleep(2);
+}
