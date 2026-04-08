@@ -39,3 +39,15 @@ done
 
 wait
 sleep 5
+
+
+# -----------------------------
+# 3. Query Prometheus + store baseline
+# -----------------------------
+echo "Collecting metrics..."
+
+for route in "${ROUTES[@]}"; do
+
+  echo "======================================"
+  echo "Processing route: $route"
+  echo "======================================"
