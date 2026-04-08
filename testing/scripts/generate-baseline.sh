@@ -26,3 +26,16 @@ for i in {1..20}; do
 done
 
 sleep 5
+
+# -----------------------------
+# 2. Load phase
+# -----------------------------
+echo "Load phase..."
+for i in {1..50}; do
+  for route in "${ROUTES[@]}"; do
+    curl -s "$PROM_URL$route" > /dev/null &
+  done
+done
+
+wait
+sleep 5
