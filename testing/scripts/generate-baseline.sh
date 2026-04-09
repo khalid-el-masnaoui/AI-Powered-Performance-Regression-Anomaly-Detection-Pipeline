@@ -146,3 +146,13 @@ for route in "${ROUTES[@]}"; do
     echo "⚠️ No p95 data for $route"
     continue
   fi
+
+  # ---------------------------------------------------
+  # DEFAULTS
+  # ---------------------------------------------------
+
+  AVG=${AVG:-0}
+  P99=${P99:-0}
+  ERROR_RATE=${ERROR_RATE:-0}
+  MAX_LATENCY=${MAX_LATENCY:-0}
+  THROUGHPUT_RPS=${THROUGHPUT_RPS:-0}
