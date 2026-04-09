@@ -91,3 +91,22 @@ for route in "${ROUTES[@]}"; do
   AVG=$(curl -sG "$PROM_URL/api/v1/query" \
     --data-urlencode "query=$AVG_QUERY" \
     | jq -r '.data.result[0].value[1]')
+
+
+  # ---------------------------------------------------
+  # ERROR RATE
+  # ---------------------------------------------------
+
+  ERROR_QUERY="
+    sum(rate(app_requests_total{route=\"$route\",status=~\"5..\"}[2m]))
+    /
+    sum(rate(app_requests_total{route=\"$route\"}[2m]))
+  "
+
+  ERROR_RATE=$(curl -sG "$PROM_URL/api/v1/query" \
+    --data-urlencode "query=$ERROR_QUERY" \
+    | jq -r '.data.result[0].value[1]')
+
+    if [[ "$ERROR_RATE" == "null" || "$ERROR_RATE" == "NaN" || -z "$ERROR_RATE" ]]; then
+        ERROR_RATE=0
+    fi
