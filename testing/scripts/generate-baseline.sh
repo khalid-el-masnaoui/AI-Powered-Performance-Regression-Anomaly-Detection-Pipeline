@@ -136,3 +136,13 @@ for route in "${ROUTES[@]}"; do
   THROUGHPUT_RPS=$(curl -sG "$PROM_URL/api/v1/query" \
     --data-urlencode "query=$THROUGHPUT_RPS_QUERY" \
     | jq -r '.data.result[0].value[1]')
+
+
+  # ---------------------------------------------------
+  # VALIDATION
+  # ---------------------------------------------------
+
+  if [ "$P95" == "null" ] || [ -z "$P95" ]; then
+    echo "⚠️ No p95 data for $route"
+    continue
+  fi
