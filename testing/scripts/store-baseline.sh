@@ -87,3 +87,17 @@ for route in "${ROUTES[@]}"; do
     if [[ "$ERROR_RATE" == "null" || "$ERROR_RATE" == "NaN" || -z "$ERROR_RATE" ]]; then
         ERROR_RATE=0
     fi
+
+  # ---------------------------------------------------
+  # MAX LATENCY
+  # ---------------------------------------------------
+
+  MAX_QUERY="
+    max_over_time(
+      app_request_duration_seconds_sum{route=\"$route\"}[5m]
+    )
+  "
+
+  MAX_LATENCY=$(curl -sG "$PROM_URL/api/v1/query" \
+    --data-urlencode "query=$MAX_QUERY" \
+    | jq -r '.data.result[0].value[1]')
