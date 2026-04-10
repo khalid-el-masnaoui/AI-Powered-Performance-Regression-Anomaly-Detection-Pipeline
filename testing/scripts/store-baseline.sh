@@ -54,3 +54,17 @@ for route in "${ROUTES[@]}"; do
   P99=$(curl -sG "$PROM_URL/api/v1/query" \
     --data-urlencode "query=$P99_QUERY" \
     | jq -r '.data.result[0].value[1]')
+
+  # ---------------------------------------------------
+  # AVG
+  # ---------------------------------------------------
+
+  AVG_QUERY="
+    rate(app_request_duration_seconds_sum{route=\"$route\"}[2m])
+    /
+    rate(app_request_duration_seconds_count{route=\"$route\"}[2m])
+  "
+
+  AVG=$(curl -sG "$PROM_URL/api/v1/query" \
+    --data-urlencode "query=$AVG_QUERY" \
+    | jq -r '.data.result[0].value[1]')
