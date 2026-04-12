@@ -133,3 +133,15 @@ for route in "${ROUTES[@]}"; do
   ERROR_RATE=${ERROR_RATE:-0}
   MAX_LATENCY=${MAX_LATENCY:-0}
   THROUGHPUT_RPS=${THROUGHPUT_RPS:-0}
+
+  # ---------------------------------------------------
+  # LOGGING
+  # ---------------------------------------------------
+
+  echo "Route        : $route"
+  echo "P95          : $P95"
+  echo "P99          : $P99"
+  echo "AVG          : $AVG"
+  echo "Error Rate   : $ERROR_RATE"
+  echo "Max Latency  : $MAX_LATENCY"
+  echo "Throughput   : $THROUGHPUT_RPS"
