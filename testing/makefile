@@ -15,3 +15,9 @@ regression-service-baseline:
 
 	@echo "⏳ Waiting for Prometheus to collect data..."
 	sleep 5
+
+	@echo "Extracting metrics & storing baseline..."
+	./scripts/store-baseline.sh "$(BASELINE_ROUTES)"
+
+	@echo "✅ Baseline ready"
+	  
