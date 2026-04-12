@@ -145,3 +145,23 @@ for route in "${ROUTES[@]}"; do
   echo "Error Rate   : $ERROR_RATE"
   echo "Max Latency  : $MAX_LATENCY"
   echo "Throughput   : $THROUGHPUT_RPS"
+
+  # ---------------------------------------------------
+  # SEND BASELINE
+  # ---------------------------------------------------
+
+  curl -s -X POST "$REGRESSION_URL/baseline" \
+    -H "Content-Type: application/json" \
+    -d "{
+      \"route\": \"$route\",
+      \"p95\": $P95,
+      \"p99\": $P99,
+      \"avg\": $AVG,
+      \"error_rate\": $ERROR_RATE,
+      \"max_latency\": $MAX_LATENCY,
+      \"throughput\": $THROUGHPUT_RPS
+    }" > /dev/null
+
+done
+
+echo "✅ Baseline storage complete"
