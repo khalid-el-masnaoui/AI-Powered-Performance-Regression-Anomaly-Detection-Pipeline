@@ -21,3 +21,6 @@ regression-service-baseline:
 
 	@echo "✅ Baseline ready"
 	  
+
+full-regression-service-test: regression-service-baseline slow_traffic
+	
