@@ -24,3 +24,24 @@ export const options = {
 
       exec: "baselinePhase"
     },
+
+    // ---------------------------------------------------
+    // GRADUAL DEGRADATION
+    // ---------------------------------------------------
+
+    degradation: {
+
+      executor: "constant-arrival-rate",
+
+      rate: 20,
+
+      timeUnit: "1s",
+
+      startTime: "3m",
+
+      duration: "2m",
+
+      preAllocatedVUs: 20,
+
+      exec: "degradationPhase"
+    },
