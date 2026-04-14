@@ -105,3 +105,17 @@ export function baselinePhase() {
 
   sleep(1);
 }
+
+
+// -------------------------------------------------------
+// GRADUAL LATENCY INCREASE
+// -------------------------------------------------------
+
+export function degradationPhase() {
+
+  http.get(`${NGINX_URL}/?delay=0.2`);
+
+  http.get(`${NGINX_URL}/api/users?delay=0.3`);
+
+  sleep(1);
+}
