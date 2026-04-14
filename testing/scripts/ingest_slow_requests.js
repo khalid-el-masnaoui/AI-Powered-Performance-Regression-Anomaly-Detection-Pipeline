@@ -18,7 +18,7 @@ export default function () {
 
   // Inject slow request every ~3 iterations
   if (__ITER % 3 === 0) {
-    http.get('http://localhost:8080/api/users?delay=20'); // simulate 1.5s latency
+    http.get('http://localhost:8080/api/users?delay=20'); // simulate 18s latency
   }
 
   sleep(2);

@@ -20,7 +20,7 @@ export default function () {
 
   // Inject slow request every ~3 iterations
   if (__ITER % 3 === 0) {
-    http.get(`${NGINX_URL}/api/users?delay=18`); // simulate 1.5s latency
+    http.get(`${NGINX_URL}/api/users?delay=18`); // simulate 18s latency
   }
 
   sleep(2);
