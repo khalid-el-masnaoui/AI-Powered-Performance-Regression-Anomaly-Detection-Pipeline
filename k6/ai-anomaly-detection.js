@@ -89,3 +89,19 @@ export const options = {
     }
   }
 };
+
+const NGINX_URL = __ENV.NGINX_URL || "http://nginx";
+
+
+// -------------------------------------------------------
+// NORMAL BASELINE
+// -------------------------------------------------------
+
+export function baselinePhase() {
+
+  http.get(`${NGINX_URL}/`);
+
+  http.get(`${NGINX_URL}/api/users`);
+
+  sleep(1);
+}
