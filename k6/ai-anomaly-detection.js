@@ -133,3 +133,17 @@ export function spikePhase() {
 
   sleep(0.5);
 }
+
+
+// -------------------------------------------------------
+// RECOVERY
+// -------------------------------------------------------
+
+export function recoveryPhase() {
+
+  http.get(`${NGINX_URL}/`);
+
+  http.get(`${NGINX_URL}/api/users`);
+
+  sleep(1);
+}
