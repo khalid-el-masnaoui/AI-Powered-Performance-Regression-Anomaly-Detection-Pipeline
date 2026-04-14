@@ -66,3 +66,26 @@ export const options = {
 
       exec: "spikePhase"
     },
+
+    // ---------------------------------------------------
+    // RECOVERY
+    // ---------------------------------------------------
+
+    recovery: {
+
+      executor: "constant-arrival-rate",
+
+      rate: 15,
+
+      timeUnit: "1s",
+
+      startTime: "8m",
+
+      duration: "2m",
+
+      preAllocatedVUs: 20,
+
+      exec: "recoveryPhase"
+    }
+  }
+};
