@@ -45,3 +45,24 @@ export const options = {
 
       exec: "degradationPhase"
     },
+
+    // ---------------------------------------------------
+    // MASSIVE REGRESSION SPIKE
+    // ---------------------------------------------------
+
+    spike: {
+
+      executor: "constant-arrival-rate",
+
+      rate: 40,
+
+      timeUnit: "1s",
+
+      startTime: "6m",
+
+      duration: "1m",
+
+      preAllocatedVUs: 50,
+
+      exec: "spikePhase"
+    },
