@@ -119,3 +119,17 @@ export function degradationPhase() {
 
   sleep(1);
 }
+
+
+// -------------------------------------------------------
+// MASSIVE REGRESSION
+// -------------------------------------------------------
+
+export function spikePhase() {
+
+  http.get(`${NGINX_URL}/?delay=15`);
+
+  http.get(`${NGINX_URL}/api/users?delay=15.5`);
+
+  sleep(0.5);
+}
