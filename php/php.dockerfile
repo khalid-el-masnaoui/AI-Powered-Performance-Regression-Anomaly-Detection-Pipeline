@@ -39,6 +39,12 @@ RUN docker-php-ext-install pdo pdo_mysql
 RUN echo "pm.status_path = /status" >> /usr/local/etc/php-fpm.d/www.conf
 RUN echo "process.dumpable = yes" >> /usr/local/etc/php-fpm.d/www.conf
 
+
+# Adjust FPM settings for better performance under load (avoid 499 errors)
+RUN sed -i 's/pm = dynamic/pm = static/g' /usr/local/etc/php-fpm.d/www.conf \
+    && sed -i 's/pm.max_children = 5/pm.max_children = 50/g' /usr/local/etc/php-fpm.d/www.conf \
+    && sed -i 's/;pm.max_requests = 500/pm.max_requests = 1000/g' /usr/local/etc/php-fpm.d/www.conf
+
 # Install APCu for caching (for prometheus client)
 RUN pecl install apcu \
     && docker-php-ext-enable apcu
