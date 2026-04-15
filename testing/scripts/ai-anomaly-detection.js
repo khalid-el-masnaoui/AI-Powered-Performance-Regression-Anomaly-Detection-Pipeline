@@ -89,3 +89,19 @@ export const options = {
     }
   }
 };
+
+const NGINX_URL = "http://localhost:8080";
+
+
+// -------------------------------------------------------
+// NORMAL BASELINE
+// -------------------------------------------------------
+
+export function baselinePhase() {
+
+  http.get(`${NGINX_URL}/`);
+
+  http.get(`${NGINX_URL}/api/users`);
+
+  sleep(1);
+}
