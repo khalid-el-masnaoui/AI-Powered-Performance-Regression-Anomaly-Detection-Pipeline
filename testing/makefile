@@ -24,3 +24,7 @@ regression-service-baseline:
 
 full-regression-service-test: regression-service-baseline slow_traffic
 	
+
+test-ai-anomaly-detection:
+	@echo "testing ai anomaly detection..."
+	k6 run scripts/ai-anomaly-detection.js
