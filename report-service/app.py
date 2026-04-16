@@ -25,3 +25,8 @@ app = Flask(__name__)
 
 BASELINES_BASE_DIR = "/reports/baselines"
 REGRESSIONS_BASE_DIR = "/reports/regressions"
+
+#baselines
+BASELINE_DIR = f"{BASELINES_BASE_DIR}/baselines"
+BASELINE_HISTORY_DIR = f"{BASELINES_BASE_DIR}/history"
+BASELINE_CHART_DIR = f"{BASELINES_BASE_DIR}/charts"
