@@ -55,3 +55,9 @@ def fmt(value):
         return f"{float(value):.4f}"
     except:
         return "0.0000"
+
+# ---------------------------------------------------
+# Format Latency in ms
+# ---------------------------------------------------
+def fmt_ms(value):
+    return f"{float(value)*1000:.2f} ms"
