@@ -61,3 +61,21 @@ def fmt(value):
 # ---------------------------------------------------
 def fmt_ms(value):
     return f"{float(value)*1000:.2f} ms"
+
+# ---------------------------------------------------
+# Save Baseline History
+# ---------------------------------------------------
+def save_history(route, metrics):
+
+    safe_route = route.replace("/", "_")
+
+    history_file = os.path.join(
+        BASELINE_HISTORY_DIR,
+        f"{safe_route}.json"
+    )
+
+    history = []
+
+    if os.path.exists(history_file):
+        with open(history_file, "r") as f:
+            history = json.load(f)
