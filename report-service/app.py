@@ -45,3 +45,13 @@ os.makedirs(BASELINE_CHART_DIR, exist_ok=True)
 os.makedirs(REGRESSIONS_DIR, exist_ok=True)
 os.makedirs(REGRESSION_HISTORY_DIR, exist_ok=True)
 os.makedirs(REGRESSION_CHART_DIR, exist_ok=True)
+
+# ---------------------------------------------------
+# Format Numbers
+# ---------------------------------------------------
+def fmt(value):
+
+    try:
+        return f"{float(value):.4f}"
+    except:
+        return "0.0000"
