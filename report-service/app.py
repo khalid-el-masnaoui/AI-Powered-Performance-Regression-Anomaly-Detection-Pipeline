@@ -256,3 +256,32 @@ def generate_baseline():
     )
 
     elements.append(Spacer(1, 20))
+
+    # ---------------------------------------------
+    # Summary Table
+    # ---------------------------------------------
+    table_data = [
+        ["Metric", "Value"],
+        ["Route", route],
+        ["P95", f"{fmt_ms(p95)}"],
+        ["P99", f"{fmt_ms(p99)}"],
+        ["Average", f"{fmt_ms(avg)}"],
+        ["Error Rate", fmt(error_rate)],
+        ["Max Latency", fmt_ms(max_latency)],
+        ["Throughput", fmt(throughput)],
+        ["Generated", timestamp],
+        ["Samples", str(len(history))]
+    ]
+
+    table = Table(table_data, colWidths=[150, 300])
+
+    table.setStyle(TableStyle([
+        ('BACKGROUND', (0, 0), (-1, 0), colors.grey),
+        ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
+        ('GRID', (0, 0), (-1, -1), 1, colors.black),
+        ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
+    ]))
+
+    elements.append(table)
+
+    elements.append(Spacer(1, 30))
