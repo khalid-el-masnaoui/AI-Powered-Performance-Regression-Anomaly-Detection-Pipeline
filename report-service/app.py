@@ -247,3 +247,12 @@ def generate_baseline():
     styles = getSampleStyleSheet()
 
     elements = []
+
+    # ---------------------------------------------
+    # Title
+    # ---------------------------------------------
+    elements.append(
+        Paragraph(f"<b>Baseline Report</b>", styles["Title"])
+    )
+
+    elements.append(Spacer(1, 20))
