@@ -285,3 +285,19 @@ def generate_baseline():
     elements.append(table)
 
     elements.append(Spacer(1, 30))
+
+    # elements.append(
+    #     Paragraph(f"<b>Route:</b> {route}", styles["BodyText"])
+    # )
+
+    # elements.append(
+    #     Paragraph(f"<b>P95:</b> {p95}", styles["BodyText"])
+    # )
+
+    # elements.append(
+    #     Paragraph(f"<b>Average:</b> {avg}", styles["BodyText"])
+    # )
+
+    # elements.append(
+    #     Paragraph(f"<b>Generated:</b> {timestamp}", styles["BodyText"])
+    # )
