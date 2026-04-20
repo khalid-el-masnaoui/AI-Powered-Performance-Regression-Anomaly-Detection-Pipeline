@@ -221,3 +221,15 @@ def generate_baseline():
     filename = f"{safe_route}_{timestamp}.pdf"
 
     filepath = os.path.join(BASELINE_DIR, filename)
+
+    # ---------------------------------------------
+    # Save historical trend
+    # ---------------------------------------------
+    history = save_history(route, {
+        "p95": p95,
+        "p99": p99,
+        "avg": avg,
+        "error_rate": error_rate,
+        "max_latency": max_latency,
+        "throughput": throughput
+    })
