@@ -97,7 +97,7 @@ def save_history(route, metrics):
 
 
 # ---------------------------------------------------
-# Generate Baseline Trend Chart (P95)
+# Generate Baseline Trend Chart
 # ---------------------------------------------------
 def generate_chart(route, history):
 
@@ -113,3 +113,22 @@ def generate_chart(route, history):
         BASELINE_CHART_DIR,
         f"{filename}"
     )
+
+    plt.figure(figsize=(10, 5))
+
+    plt.plot(df["timestamp"], df["p95"], marker="o")
+
+    plt.title(f"P95 Trend — {route}")
+
+    plt.xlabel("Time")
+    plt.ylabel("Latency (seconds)")
+
+    plt.xticks(rotation=45)
+
+    plt.tight_layout()
+
+    plt.savefig(chart_path)
+
+    plt.close()
+
+    return chart_path
