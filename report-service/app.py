@@ -132,3 +132,29 @@ def generate_chart(route, history):
     plt.close()
 
     return chart_path
+
+
+# ---------------------------------------------------
+# Save Regression History
+# ---------------------------------------------------
+def save_regression_history(route, payload):
+
+    safe_route = route.replace("/", "_")
+
+    path = os.path.join(
+        REGRESSION_HISTORY_DIR,
+        f"{safe_route}.json"
+    )
+
+    history = []
+
+    if os.path.exists(path):
+        with open(path, "r") as f:
+            history = json.load(f)
+
+    history.append(payload)
+
+    with open(path, "w") as f:
+        json.dump(history, f, indent=2)
+
+    return history
