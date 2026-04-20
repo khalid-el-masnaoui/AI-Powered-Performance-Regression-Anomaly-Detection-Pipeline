@@ -233,3 +233,10 @@ def generate_baseline():
         "max_latency": max_latency,
         "throughput": throughput
     })
+
+    # ---------------------------------------------
+    # Generate chart
+    # ---------------------------------------------
+    chart_path = generate_chart(route, history)
+
+    # ------------
