@@ -158,3 +158,18 @@ def save_regression_history(route, payload):
         json.dump(history, f, indent=2)
 
     return history
+
+# ---------------------------------------------------
+# Generate Regression Trend Chart (P95)
+# ---------------------------------------------------
+def generate_regression_chart(route, history, metric):
+
+    timestamps = [
+    h["timestamp"]
+    for h in history
+    ]
+
+    values = [
+        h["current"].get(metric, 0)
+        for h in history
+    ]
