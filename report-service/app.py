@@ -213,3 +213,11 @@ def generate_baseline():
     error_rate = float(data.get("error_rate", 0))
     max_latency = float(data.get("max_latency", 0))
     throughput = float(data.get("throughput", 0))
+
+    timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+
+    safe_route = route.replace("/", "_")
+
+    filename = f"{safe_route}_{timestamp}.pdf"
+
+    filepath = os.path.join(BASELINE_DIR, filename)
