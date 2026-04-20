@@ -160,7 +160,7 @@ def save_regression_history(route, payload):
     return history
 
 # ---------------------------------------------------
-# Generate Regression Trend Chart (P95)
+# Generate Regression Trend Chart
 # ---------------------------------------------------
 def generate_regression_chart(route, history, metric):
 
@@ -173,3 +173,27 @@ def generate_regression_chart(route, history, metric):
         h["current"].get(metric, 0)
         for h in history
     ]
+
+    plt.figure(figsize=(10, 4))
+
+    plt.plot(timestamps, values)
+
+    plt.xticks(rotation=45)
+
+    plt.title(f"{route} - {metric} Trend")
+
+    plt.tight_layout()
+
+    timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+
+    filename = f"{route.replace('/', '_')}_{metric}_{timestamp}.png"
+
+    chart_path = os.path.join(
+        REGRESSION_CHART_DIR,
+        f"{filename}"
+    )
+    plt.savefig(chart_path)
+
+    plt.close()
+
+    return chart_path
