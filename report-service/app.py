@@ -94,3 +94,22 @@ def save_history(route, metrics):
         json.dump(history, f, indent=2)
 
     return history
+
+
+# ---------------------------------------------------
+# Generate Baseline Trend Chart (P95)
+# ---------------------------------------------------
+def generate_chart(route, history):
+
+    df = pd.DataFrame(history)
+
+    df["timestamp"] = pd.to_datetime(df["timestamp"])
+
+    timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+
+    filename = f"{route.replace('/', '_')}_{timestamp}.png"
+
+    chart_path = os.path.join(
+        BASELINE_CHART_DIR,
+        f"{filename}"
+    )
