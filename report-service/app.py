@@ -366,3 +366,23 @@ def generate_baseline():
         "history_entries": len(history)
 
     })
+
+
+# ---------------------------------------------------
+# Generate Regression PDF
+# ---------------------------------------------------
+@app.route("/generate", methods=["POST"])
+def generate():
+
+    data = request.json
+
+    # get the route of the first entry (assuming single route per report)
+    route = list(data.keys())[0]
+
+    timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+
+    safe_route = route.replace("/", "_")
+    
+    pdf_name = f"{safe_route}_regression_{timestamp}.pdf"
+
+    pdf_path = os.path.join(REGRESSIONS_DIR, pdf_name)
