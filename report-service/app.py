@@ -395,3 +395,26 @@ def generate():
     styles = getSampleStyleSheet()
 
     content = []
+
+    # ---------------------------------------------------
+    # COVER PAGE
+    # ---------------------------------------------------
+
+    content.append(
+        Paragraph(
+            "AI Performance Regression Report",
+            styles["Title"]
+        )
+    )
+
+    content.append(Spacer(1, 20))
+
+    content.append(
+        Paragraph(
+            f"Generated: {timestamp}",
+            styles["Normal"]
+        )
+    )
+
+    #content.append(PageBreak())
+    content.append(Spacer(1, 20))
