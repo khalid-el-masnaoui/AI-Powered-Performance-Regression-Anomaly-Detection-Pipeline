@@ -320,3 +320,37 @@ def generate_baseline():
     )
 
     elements.append(Spacer(1, 20))
+
+    # ---------------------------------------------
+    # Historical entries
+    # ---------------------------------------------
+
+    elements.append(
+        Paragraph(
+            "<b>Historical Baselines</b>",
+            styles["Heading2"]
+        )
+    )
+
+    history_table = [["Timestamp", "P95", "P99", "Average", "Error Rate", "Max Latency", "Throughput"]]
+
+    for entry in history[-10:]:
+        history_table.append([
+            entry["timestamp"],
+            f"{fmt_ms(entry['p95'])}",
+            f"{fmt_ms(entry['p99'])}",
+            f"{fmt_ms(entry['avg'])}",
+            f"{fmt(entry['error_rate'])}",
+            f"{fmt_ms(entry['max_latency'])}",
+            f"{fmt(entry['throughput'])}"
+        ])
+
+    hist_table = Table(history_table, colWidths=[170, 75, 75, 75, 75, 90, 75])
+
+    hist_table.setStyle(TableStyle([
+        ('BACKGROUND', (0, 0), (-1, 0), colors.lightgrey),
+        ('GRID', (0, 0), (-1, -1), 1, colors.black),
+        ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
+    ]))
+
+    elements.append(hist_table)
