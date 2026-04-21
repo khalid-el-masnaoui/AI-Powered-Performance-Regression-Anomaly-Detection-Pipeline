@@ -386,3 +386,12 @@ def generate():
     pdf_name = f"{safe_route}_regression_{timestamp}.pdf"
 
     pdf_path = os.path.join(REGRESSIONS_DIR, pdf_name)
+
+    doc = SimpleDocTemplate(
+        pdf_path,
+        pagesize=A3
+    )
+
+    styles = getSampleStyleSheet()
+
+    content = []
