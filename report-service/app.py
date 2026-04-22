@@ -418,3 +418,14 @@ def generate():
 
     #content.append(PageBreak())
     content.append(Spacer(1, 20))
+
+
+    # ---------------------------------------------------
+    # ROUTES
+    # ---------------------------------------------------
+
+    for route, metrics in data.items():
+
+        baseline = metrics.get("baseline", {})
+
+        current = metrics.get("current", {})
