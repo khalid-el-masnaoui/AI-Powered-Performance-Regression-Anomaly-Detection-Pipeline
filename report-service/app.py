@@ -499,3 +499,25 @@ def generate():
         content.append(summary_table)
 
         content.append(Spacer(1, 20))
+
+        # ------------------------------------------------
+        # Metrics comparison
+        # ------------------------------------------------
+
+        table_data = [[
+
+            "Metric",
+            "Baseline",
+            "Current",
+            "Increase %"
+        ]]
+
+        metrics_list = [
+
+            "p95",
+            "p99",
+            "avg",
+            "error_rate",
+            "throughput",
+            "max_latency"
+        ]
