@@ -433,3 +433,22 @@ def generate():
         ai = metrics.get("ai", {})
 
         increase = metrics.get("increase", {})
+
+        # ------------------------------------------------
+        # Save history
+        # ------------------------------------------------
+
+        history_entry = {
+
+            "timestamp": timestamp,
+
+            "baseline": baseline,
+
+            "current": current,
+
+            "increase": increase,
+
+            "ai": ai
+        }
+
+        history = save_regression_history(route, history_entry)
