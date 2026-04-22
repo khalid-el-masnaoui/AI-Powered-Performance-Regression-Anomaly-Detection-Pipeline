@@ -452,3 +452,16 @@ def generate():
         }
 
         history = save_regression_history(route, history_entry)
+
+        # ------------------------------------------------
+        # Route header
+        # ------------------------------------------------
+
+        content.append(
+            Paragraph(
+                f"Route: {route}",
+                styles["Heading1"]
+            )
+        )
+
+        content.append(Spacer(1, 20))
