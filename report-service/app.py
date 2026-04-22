@@ -521,3 +521,22 @@ def generate():
             "throughput",
             "max_latency"
         ]
+
+        for metric in metrics_list:
+
+            table_data.append([
+
+                metric,
+
+                fmt(
+                    baseline.get(metric, 0)
+                ),
+
+                fmt(
+                    current.get(metric, 0)
+                ),
+
+                fmt(
+                    increase.get(metric, 0)
+                )
+            ])
