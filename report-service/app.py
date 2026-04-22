@@ -429,3 +429,7 @@ def generate():
         baseline = metrics.get("baseline", {})
 
         current = metrics.get("current", {})
+
+        ai = metrics.get("ai", {})
+
+        increase = metrics.get("increase", {})
