@@ -465,3 +465,37 @@ def generate():
         )
 
         content.append(Spacer(1, 20))
+
+        # ------------------------------------------------
+        # Executive summary
+        # ------------------------------------------------
+
+        summary = [
+
+            ["Metric", "Value"],
+
+            ["Regression", str(ai.get("regression"))],
+
+            ["Severity", ai.get("severity")],
+
+            ["Anomaly Score", fmt(ai.get("anomaly_score"))],
+
+            ["Confidence", fmt(ai.get("confidence"))],
+
+            ["Z-Score", fmt(ai.get("zscore"))]
+        ]
+
+        summary_table = Table(summary)
+
+        summary_table.setStyle(TableStyle([
+
+            ('BACKGROUND', (0,0), (-1,0), colors.grey),
+
+            ('TEXTCOLOR', (0,0), (-1,0), colors.whitesmoke),
+
+            ('GRID', (0,0), (-1,-1), 1, colors.black),
+        ]))
+
+        content.append(summary_table)
+
+        content.append(Spacer(1, 20))
