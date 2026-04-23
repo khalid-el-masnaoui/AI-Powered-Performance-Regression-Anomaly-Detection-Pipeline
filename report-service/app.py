@@ -540,3 +540,19 @@ def generate():
                     increase.get(metric, 0)
                 )
             ])
+
+        metrics_table = Table(table_data)
+
+        metrics_table.setStyle(TableStyle([
+
+            ('BACKGROUND', (0,0), (-1,0), colors.darkblue),
+
+            ('TEXTCOLOR', (0,0), (-1,0), colors.whitesmoke),
+
+            ('GRID', (0,0), (-1,-1), 1, colors.black),
+
+        ]))
+
+        content.append(metrics_table)
+
+        content.append(Spacer(1, 30))
