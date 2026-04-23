@@ -655,3 +655,18 @@ def generate():
         content.append(hist)
 
         content.append(PageBreak())
+
+    # ---------------------------------------------------
+    # Build PDF
+    # ---------------------------------------------------
+
+    doc.build(content)
+
+    return jsonify({
+
+        "status": "generated",
+
+        "file": pdf_name,
+
+        "path": pdf_path
+    })
