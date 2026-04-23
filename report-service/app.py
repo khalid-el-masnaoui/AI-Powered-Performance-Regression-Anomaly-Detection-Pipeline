@@ -670,3 +670,7 @@ def generate():
 
         "path": pdf_path
     })
+
+@app.route("/health")
+def health():
+    return {"status": "ok"}
