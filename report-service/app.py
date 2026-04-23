@@ -594,3 +594,64 @@ def generate():
             )
 
             content.append(Spacer(1, 20))
+
+        # ------------------------------------------------
+        # Historical table
+        # ------------------------------------------------
+
+        hist_table = [[
+
+            "Timestamp",
+            "P95",
+            "P99",
+            "AVG",
+            "Throughput",
+            "Errors",
+            "Anomaly"
+        ]]
+
+        for h in history[-10:]:
+
+            hist_table.append([
+
+                h["timestamp"],
+
+                fmt(
+                    h["current"].get("p95")
+                ),
+
+                fmt(
+                    h["current"].get("p99")
+                ),
+
+                fmt(
+                    h["current"].get("avg")
+                ),
+
+                fmt(
+                    h["current"].get("throughput")
+                ),
+
+                fmt(
+                    h["current"].get("error_rate")
+                ),
+
+                fmt(
+                    h["ai"].get("anomaly_score")
+                )
+            ])
+
+        hist = Table(hist_table)
+
+        hist.setStyle(TableStyle([
+
+            ('BACKGROUND', (0,0), (-1,0), colors.darkgreen),
+
+            ('TEXTCOLOR', (0,0), (-1,0), colors.whitesmoke),
+
+            ('GRID', (0,0), (-1,-1), 1, colors.black),
+        ]))
+
+        content.append(hist)
+
+        content.append(PageBreak())
