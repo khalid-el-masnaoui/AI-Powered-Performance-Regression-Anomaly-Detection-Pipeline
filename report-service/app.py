@@ -556,3 +556,41 @@ def generate():
         content.append(metrics_table)
 
         content.append(Spacer(1, 30))
+
+        # ------------------------------------------------
+        # Charts
+        # ------------------------------------------------
+
+        chart_metrics = [
+
+            "p95",
+            "p99",
+            "avg",
+            "throughput",
+            "error_rate"
+        ]
+
+        for metric in chart_metrics:
+
+            chart = generate_regression_chart(
+                route,
+                history,
+                metric
+            )
+
+            content.append(
+                Paragraph(
+                    f"{metric} Trend",
+                    styles["Heading2"]
+                )
+            )
+
+            content.append(
+                Image(
+                    chart,
+                    width=500,
+                    height=200
+                )
+            )
+
+            content.append(Spacer(1, 20))
