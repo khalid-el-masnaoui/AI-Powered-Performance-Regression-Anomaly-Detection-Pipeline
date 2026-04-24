@@ -14,3 +14,7 @@ PROMETHEUS_URL = os.getenv("PROMETHEUS_URL", "http://prometheus:9090")
 AI_ANOMALY_DETECTION_URL = os.getenv("AI_ANOMALY_DETECTION_URL", "http://ai-service:5200")
 REPORT_URL = os.getenv("REPORT_URL", "http://report-service:5000")
 SLACK_WEBHOOK = os.getenv("SLACK_WEBHOOK")
+
+r = redis.Redis(host=REDIS_HOST, port=6379, decode_responses=True)
+
+print ("App started")
