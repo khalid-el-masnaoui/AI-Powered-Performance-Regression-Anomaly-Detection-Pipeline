@@ -48,3 +48,141 @@ def query_prometheus_p95(route):
     except Exception as e:
         print("Prometheus query error:", e)
         return 0
+
+def query_prometheus_metrics(route):
+    # --------------------------------------------------
+    # Helper
+    # --------------------------------------------------
+
+    def run_query(query):
+
+        try:
+
+            response = requests.get(f"{PROMETHEUS_URL}/api/v1/query", params={"query": query})
+
+            data = response.json()
+
+            results = data.get("data", {}).get("result", [])
+
+            if not results:
+                return 0
+
+            value = results[0]["value"][1]
+
+            if value in ["NaN", "null", None]:
+                return 0
+
+            return round(float(value), 4)
+
+        except Exception as e:
+
+            print(f"Prometheus query failed: {e}")
+
+            return 0
+
+    # --------------------------------------------------
+    # P95
+    # --------------------------------------------------
+
+    p95_query = f'''
+    histogram_quantile(
+      0.95,
+      sum(
+        rate(
+          app_request_duration_seconds_bucket{{route="{route}"}}[2m]
+        )
+      ) by (le)
+    )
+    '''
+
+    # --------------------------------------------------
+    # P99
+    # --------------------------------------------------
+
+    p99_query = f'''
+    histogram_quantile(
+      0.99,
+      sum(
+        rate(
+          app_request_duration_seconds_bucket{{route="{route}"}}[2m]
+        )
+      ) by (le)
+    )
+    '''
+
+    # --------------------------------------------------
+    # AVG
+    # --------------------------------------------------
+
+    avg_query = f'''
+    rate(
+      app_request_duration_seconds_sum{{route="{route}"}}[2m]
+    )
+    /
+    rate(
+      app_request_duration_seconds_count{{route="{route}"}}[2m]
+    )
+    '''
+
+    # --------------------------------------------------
+    # ERROR RATE
+    # --------------------------------------------------
+
+    error_query = f'''
+    (
+      sum(
+        rate(
+          app_requests_total{{route="{route}",status=~"5.."}}[2m]
+        )
+      )
+      /
+      sum(
+        rate(
+          app_requests_total{{route="{route}"}}[2m]
+        )
+      )
+    )
+    '''
+
+    # --------------------------------------------------
+    # MAX LATENCY
+    # --------------------------------------------------
+
+    max_query = f'''
+    max_over_time(
+      app_request_duration_seconds_sum{{route="{route}"}}[5m]
+    )
+    '''
+
+    # --------------------------------------------------
+    # THROUGHPUT
+    # --------------------------------------------------
+
+    throughput_query = f'''
+    sum(
+      rate(
+        app_request_duration_seconds_count{{route="{route}"}}[1m]
+      )
+    )
+    '''
+
+    # --------------------------------------------------
+    # Execute all queries
+    # --------------------------------------------------
+
+    metrics = {
+
+        "p95": run_query(p95_query),
+
+        "p99": run_query(p99_query),
+
+        "avg": run_query(avg_query),
+
+        "error_rate": run_query(error_query),
+
+        "max_latency": run_query(max_query),
+
+        "throughput": run_query(throughput_query)
+    }
+
+    return metrics
