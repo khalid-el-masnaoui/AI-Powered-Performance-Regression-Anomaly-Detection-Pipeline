@@ -324,3 +324,170 @@ def query_prometheus_metrics_optimized():
                 final_metrics[route][metric] = 0
 
     return final_metrics
+
+def query_history(route):
+
+    # ---------------------------------------------------
+    # Helper
+    # ---------------------------------------------------
+
+    def run_query(query):
+
+        response = requests.get(
+            f"{PROMETHEUS_URL}/api/v1/query_range",
+            params={
+                "query": query,
+                "start": time.time() - 3600,
+                "end": time.time(),
+                "step": 60
+            }
+        )
+
+        data = response.json()
+
+        results = data.get("data", {}).get("result", [])
+
+        #print(f"History query results for {route}:", results, flush=True)
+
+        if not results:
+            return []
+
+        return results[0]["values"]
+
+    # ---------------------------------------------------
+    # Queries
+    # ---------------------------------------------------
+
+    queries = {
+
+        "p95": f'''
+        histogram_quantile(
+          0.95,
+          sum(
+            rate(
+              app_request_duration_seconds_bucket{{route="{route}"}}[5m]
+            )
+          ) by (le)
+        )
+        ''',
+
+        "p99": f'''
+        histogram_quantile(
+          0.99,
+          sum(
+            rate(
+              app_request_duration_seconds_bucket{{route="{route}"}}[5m]
+            )
+          ) by (le)
+        )
+        ''',
+
+        "avg": f'''
+        sum(
+          rate(
+            app_request_duration_seconds_sum{{route="{route}"}}[5m]
+          )
+        )
+        /
+        sum(
+          rate(
+            app_request_duration_seconds_count{{route="{route}"}}[5m]
+          )
+        )
+        ''',
+
+        "error_rate": f'''
+        sum(
+          rate(
+            app_requests_total{{route="{route}",status=~"5.."}}[5m]
+          )
+        )
+        /
+        sum(
+          rate(
+            app_requests_total{{route="{route}"}}[5m]
+          )
+        )
+        ''',
+
+        "throughput": f'''
+        sum(
+          rate(
+            app_request_duration_seconds_count{{route="{route}"}}[1m]
+          )
+        )
+        ''',
+
+        "max_latency": f'''
+        max_over_time(
+          app_request_duration_seconds_sum{{route="{route}"}}[5m]
+        )
+        '''
+
+    
+    }
+
+    # ---------------------------------------------------
+    # Execute queries
+    # ---------------------------------------------------
+
+    raw = {}
+
+    for metric_name, query in queries.items():
+
+        raw[metric_name] = run_query(query)
+
+    # ---------------------------------------------------
+    # Merge by timestamp
+    # ---------------------------------------------------
+
+    history = {}
+
+    for metric_name, values in raw.items():
+
+        for item in values:
+
+            timestamp = int(item[0])
+
+            value = item[1]
+
+            try:
+                value = round(float(value), 4)
+            except:
+                value = 0
+
+            if timestamp not in history:
+
+                history[timestamp] = {
+                    "timestamp": timestamp
+                }
+
+            history[timestamp][metric_name] = value
+
+    # ---------------------------------------------------
+    # Normalize missing fields
+    # ---------------------------------------------------
+
+    required = [
+        "p95",
+        "p99",
+        "avg",
+        "error_rate",
+        "throughput",
+        "max_latency"
+    ]
+
+    final = []
+
+    for ts in sorted(history.keys()):
+
+        row = history[ts]
+
+        for metric in required:
+
+            if metric not in row:
+                row[metric] = 0
+
+        final.append(row)
+
+    return final
