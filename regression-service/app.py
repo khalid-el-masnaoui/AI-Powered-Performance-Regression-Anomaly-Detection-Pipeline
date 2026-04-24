@@ -508,3 +508,238 @@ def send_slack(payload):
         requests.post(SLACK_WEBHOOK, json=payload)
     except Exception as e:
         print("Slack error:", e)
+
+def build_slack_payload(route, result):
+
+    def fmt(value):
+        try:
+            return f"{float(value):.2f}"
+        except:
+            return "0.00"
+
+    baseline = result.get("baseline", {})
+
+    current = result.get("current", {})
+
+    ai = result.get("ai", {})
+
+    increase = result.get("increase", {})
+
+    regression = result.get("regression", False)
+
+    payload = {
+
+        "attachments": [
+
+            {
+
+                "color":
+                    "#ff0000"
+                    if regression
+                    else "#36a64f",
+
+                "title":
+                    f"🚨 Performance Alert: {route}",
+
+                "fields": [
+
+                    # -----------------------------------
+                    # Regression State
+                    # -----------------------------------
+
+                    {
+                        "title": "Regression",
+                        "value": str(regression),
+                        "short": True
+                    },
+
+                    {
+                        "title": "Severity",
+                        "value": ai.get(
+                            "severity",
+                            "N/A"
+                        ),
+                        "short": True
+                    },
+
+                    {
+                        "title": "Anomaly Score",
+                        "value": fmt(
+                            ai.get(
+                                "anomaly_score",
+                                0
+                            )
+                        ),
+                        "short": True
+                    },
+
+                    {
+                        "title": "Confidence",
+                        "value": fmt(
+                            ai.get(
+                                "confidence",
+                                0
+                            )
+                        ),
+                        "short": True
+                    },
+
+                    # -----------------------------------
+                    # P95
+                    # -----------------------------------
+
+                    {
+                        "title": "Current p95",
+                        "value":
+                            f"{fmt(current.get('p95', 0))}s",
+                        "short": True
+                    },
+
+                    {
+                        "title": "Baseline p95",
+                        "value":
+                            f"{fmt(baseline.get('p95', 0))}s",
+                        "short": True
+                    },
+
+                    {
+                        "title": "p95 Increase",
+                        "value":
+                            f"{fmt(increase.get('p95', 0))}%",
+                        "short": True
+                    },
+
+                    # -----------------------------------
+                    # P99
+                    # -----------------------------------
+
+                    {
+                        "title": "Current p99",
+                        "value":
+                            f"{fmt(current.get('p99', 0))}s",
+                        "short": True
+                    },
+
+                    {
+                        "title": "Baseline p99",
+                        "value":
+                            f"{fmt(baseline.get('p99', 0))}s",
+                        "short": True
+                    },
+
+                    {
+                        "title": "p99 Increase",
+                        "value":
+                            f"{fmt(increase.get('p99', 0))}%",
+                        "short": True
+                    },
+
+                    # -----------------------------------
+                    # AVG
+                    # -----------------------------------
+
+                    {
+                        "title": "Current AVG",
+                        "value":
+                            f"{fmt(current.get('avg', 0))}s",
+                        "short": True
+                    },
+
+                    {
+                        "title": "Baseline AVG",
+                        "value":
+                            f"{fmt(baseline.get('avg', 0))}s",
+                        "short": True
+                    },
+
+                    {
+                        "title": "AVG Increase",
+                        "value":
+                            f"{fmt(increase.get('avg', 0))}%",
+                        "short": True
+                    },
+
+                    # -----------------------------------
+                    # Throughput
+                    # -----------------------------------
+
+                    {
+                        "title": "Current Throughput",
+                        "value":
+                            f"{fmt(current.get('throughput', 0))} req/s",
+                        "short": True
+                    },
+
+                    {
+                        "title": "Baseline Throughput",
+                        "value":
+                            f"{fmt(baseline.get('throughput', 0))} req/s",
+                        "short": True
+                    },
+
+                    {
+                        "title": "Throughput Change",
+                        "value":
+                            f"{fmt(increase.get('throughput', 0))}%",
+                        "short": True
+                    },
+
+                    # -----------------------------------
+                    # Error Rate
+                    # -----------------------------------
+
+                    {
+                        "title": "Current Error Rate",
+                        "value":
+                            f"{fmt(current.get('error_rate', 0) * 100)}%",
+                        "short": True
+                    },
+
+                    {
+                        "title": "Baseline Error Rate",
+                        "value":
+                            f"{fmt(baseline.get('error_rate', 0) * 100)}%",
+                        "short": True
+                    },
+
+                    {
+                        "title": "Error Rate Change",
+                        "value":
+                            f"{fmt(increase.get('error_rate', 0))}%",
+                        "short": True
+                    },
+
+                    # -----------------------------------
+                    # Max Latency
+                    # -----------------------------------
+
+                    {
+                        "title": "Current Max Latency",
+                        "value":
+                            f"{fmt(current.get('max_latency', 0))}s",
+                        "short": True
+                    },
+
+                    {
+                        "title": "Baseline Max Latency",
+                        "value":
+                            f"{fmt(baseline.get('max_latency', 0))}s",
+                        "short": True
+                    },
+
+                    {
+                        "title": "Max Latency Change",
+                        "value":
+                            f"{fmt(increase.get('max_latency', 0))}%",
+                        "short": True
+                    },
+                ],
+
+                "footer": "AI Regression Service",
+
+                "ts": __import__("time").time()
+            }
+        ]
+    }
+
+    return payload
