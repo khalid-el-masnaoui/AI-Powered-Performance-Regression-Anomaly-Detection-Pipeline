@@ -491,3 +491,10 @@ def query_history(route):
         final.append(row)
 
     return final
+
+# -------------------------
+# SPX trigger
+# -------------------------
+def trigger_spx(route):
+    # Enable profiling for next requests
+    r.setex(f"spx:{route}", 60, 1)
