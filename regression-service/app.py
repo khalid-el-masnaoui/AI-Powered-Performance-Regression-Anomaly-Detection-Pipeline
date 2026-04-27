@@ -839,3 +839,21 @@ def alert():
     #print (payload, flush=True)
 
     results = []
+
+    for alert in payload.get("alerts", []):
+        labels = alert.get("labels", {})
+        route = labels.get("route")
+
+        if not route:
+            continue
+
+        # load baseline
+        baseline_raw = r.get(f"baseline:{route}")
+        if not baseline_raw:
+            print(f"No baseline for {route}", flush=True)
+            continue
+
+        baseline = json.loads(baseline_raw)
+
+        if baseline["p95"] == 0:
+            continue
