@@ -779,3 +779,25 @@ def generate_report(data):
         requests.post(f"{REPORT_URL}/generate", json=data)
     except Exception as e:
         print("Report error:", e)
+
+# -------------------------
+# Clean data helper
+# -------------------------
+def clean_data(data):
+
+    if isinstance(data, dict):
+
+        for k, v in data.items():
+
+            if isinstance(v, float) and (math.isnan(v) or math.isinf(v)):
+                data[k] = 0
+
+            elif isinstance(v, (dict, list)):
+                clean_data(v)
+
+    elif isinstance(data, list):
+
+        for item in data:
+            clean_data(item)
+
+    return data
