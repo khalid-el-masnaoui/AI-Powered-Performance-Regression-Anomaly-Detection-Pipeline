@@ -801,3 +801,28 @@ def clean_data(data):
             clean_data(item)
 
     return data
+
+# -------------------------
+# Store baseline per route
+# -------------------------
+@app.route("/baseline", methods=["POST"])
+def baseline():
+    data = request.json
+
+    route = data["route"]
+
+    payload = {
+        "p95": data.get("p95", 0),
+        "p99": data.get("p99", 0),
+        "avg": data.get("avg", 0),
+        "error_rate": data.get("error_rate", 0),
+        "max_latency": data.get("max_latency", 0),
+        "throughput": data.get("throughput", 0),
+        "updated_at": int(time.time())
+    }
+
+    r.set(f"baseline:{route}", json.dumps(payload))
+
+    generate_baseline_report(route, payload)
+
+    return jsonify({"status": "stored", "route": route})
