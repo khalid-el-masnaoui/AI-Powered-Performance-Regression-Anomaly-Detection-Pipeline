@@ -743,3 +743,30 @@ def build_slack_payload(route, result):
     }
 
     return payload
+
+# -------------------------
+# baseline PDF report
+# -------------------------
+def generate_baseline_report(route, payload):
+
+    try:
+
+        requests.post(
+            f"{REPORT_URL}/generate-baseline",
+            json={
+                "route": route,
+                "p95": payload["p95"],
+                "p99": payload["p99"],
+                "avg": payload["avg"],
+                "error_rate": payload["error_rate"],
+                "max_latency": payload["max_latency"],
+                "throughput": payload["throughput"]
+            },
+            timeout=5
+        )
+
+        print(f"📄 Baseline report generated for {route}")
+
+    except Exception as e:
+
+        print("Baseline report error:", e)
