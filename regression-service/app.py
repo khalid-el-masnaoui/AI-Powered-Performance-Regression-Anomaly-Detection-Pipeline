@@ -932,3 +932,10 @@ def alert():
 
             # ALWAYS notify Slack (even duplicates)
             send_slack(build_slack_payload(route,result))
+
+            # generate report
+            generate_report({route: result})
+            
+
+
+    return jsonify({"results": results})
