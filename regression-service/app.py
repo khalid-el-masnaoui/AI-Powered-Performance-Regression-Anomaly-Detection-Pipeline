@@ -1017,3 +1017,11 @@ def check():
             results.append(result)
 
     return jsonify(results)
+
+
+# -------------------------
+# health check
+# -------------------------
+@app.route("/health")
+def health():
+    return {"status": "ok"}
