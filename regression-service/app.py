@@ -952,9 +952,19 @@ def check():
 
     for route in routes:
         baseline = json.loads(r.get(f"baseline:{route}"))
+
+        if baseline["p95"] == 0:
+            continue
+
         #current = query_prometheus_p95(route)
         #current = query_prometheus_metrics(route)
         current = query_prometheus_metrics_optimized().get(route, {})
 
-        if baseline["p95"] == 0:
+        if not current:
+            continue
+
+        history = query_history(route) or []
+
+        if not history:
+            print(f"No history for {route}", flush=True)
             continue
