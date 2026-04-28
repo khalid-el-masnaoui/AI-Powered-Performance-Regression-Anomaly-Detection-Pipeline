@@ -867,3 +867,12 @@ def alert():
 
         if not current:
             continue
+
+        #print(f"Current metrics for {route}: {current}", flush=True)
+
+        history = query_history(route) or []
+
+        if not history:
+            print(f"No history for {route}", flush=True)
+            continue
+    
