@@ -897,3 +897,13 @@ def alert():
             # Network errors, timeout, connection refused, etc.
             print(f"AI service request failed for {route}", flush=True)
             ai = {}
+
+        print(f"AI response for {route}:", ai, flush=True)
+
+        if not ai:
+            continue
+
+
+        is_regression = ai["regression"]
+
+        print(f"Route: {route}, Regression: {is_regression}", flush=True)
