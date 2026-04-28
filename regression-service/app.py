@@ -924,3 +924,8 @@ def alert():
                 "regression": is_regression,
                 "ai": ai
             }
+
+            results.append(result)
+
+            # ALWAYS trigger SPX
+            trigger_spx(route)
