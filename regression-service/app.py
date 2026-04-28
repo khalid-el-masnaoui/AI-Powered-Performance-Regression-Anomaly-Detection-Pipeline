@@ -992,3 +992,28 @@ def check():
 
         if not ai:
             continue
+
+        is_regression = ai["regression"]
+
+        print(f"Route: {route}, Regression: {is_regression}", flush=True)
+
+        if is_regression:
+            result = {
+                "route": route,
+                "baseline": baseline,
+                "current": current,
+                "increase": {
+                    "p95": f'{((current["p95"] - baseline["p95"]) / baseline["p95"]) * 100:.2f}%' if baseline["p95"] > 0 else '0%',
+                    "p99": f'{((current["p99"] - baseline["p99"]) / baseline["p99"]) * 100:.2f}%' if baseline["p99"] > 0 else '0%',
+                    "avg": f'{((current["avg"] - baseline["avg"]) / baseline["avg"]) * 100:.2f}%' if baseline["avg"] > 0 else '0%',
+                    "error_rate": f'{((current["error_rate"] - baseline["error_rate"]) / baseline["error_rate"]) * 100:.2f}%' if baseline["error_rate"] > 0 else '0%',
+                    "max_latency": f'{((current["max_latency"] - baseline["max_latency"]) / baseline["max_latency"]) * 100:.2f}%' if baseline["max_latency"] > 0 else '0%',
+                    "throughput": f'{((current["throughput"] - baseline["throughput"]) / baseline["throughput"]) * 100:.2f}%' if baseline["throughput"] > 0 else '0%'
+                },
+                "regression": is_regression,
+                "ai": ai
+            }
+
+            results.append(result)
+
+    return jsonify(results)
