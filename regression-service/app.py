@@ -968,3 +968,27 @@ def check():
         if not history:
             print(f"No history for {route}", flush=True)
             continue
+
+        try:
+
+            #print(f"Sending data to AI service for {route}...", flush=True)
+
+            ai = requests.post(
+                f"{AI_ANOMALY_DETECTION_URL}/detect",
+                json=clean_data({
+                    "route": route,
+                    "history": history,
+                    "current": current,
+                    "baseline": baseline
+                })
+            ).json()
+
+        except requests.exceptions.RequestException:
+            # Network errors, timeout, connection refused, etc.
+            print(f"AI service request failed for {route}", flush=True)
+            ai = {}
+
+        print(f"AI response for {route}:", ai, flush=True)
+
+        if not ai:
+            continue
