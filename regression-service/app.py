@@ -939,3 +939,22 @@ def alert():
 
 
     return jsonify({"results": results})
+
+
+# -------------------------
+# Manual check endpoint
+# -------------------------
+@app.route("/check", methods=["POST"])
+def check():
+    routes = [key.replace("baseline:", "") for key in r.keys("baseline:*")]
+
+    results = []
+
+    for route in routes:
+        baseline = json.loads(r.get(f"baseline:{route}"))
+        #current = query_prometheus_p95(route)
+        #current = query_prometheus_metrics(route)
+        current = query_prometheus_metrics_optimized().get(route, {})
+
+        if baseline["p95"] == 0:
+            continue
