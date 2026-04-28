@@ -876,3 +876,24 @@ def alert():
             print(f"No history for {route}", flush=True)
             continue
     
+        #print(f"Current history for {route}: {history}", flush=True)
+
+        # manual history data for testing anomaly detection (running the k6 tests to trigger anomaly detection can take long)
+        try:
+
+            #print(f"Sending data to AI service for {route}...", flush=True)
+
+            ai = requests.post(
+                f"{AI_ANOMALY_DETECTION_URL}/detect",
+                json=clean_data({
+                    "route": route,
+                    "history": history,
+                    "current": current,
+                    "baseline": baseline
+                })
+            ).json()
+
+        except requests.exceptions.RequestException:
+            # Network errors, timeout, connection refused, etc.
+            print(f"AI service request failed for {route}", flush=True)
+            ai = {}
