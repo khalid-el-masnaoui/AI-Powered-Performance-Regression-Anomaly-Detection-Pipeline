@@ -929,3 +929,6 @@ def alert():
 
             # ALWAYS trigger SPX
             trigger_spx(route)
+
+            # ALWAYS notify Slack (even duplicates)
+            send_slack(build_slack_payload(route,result))
