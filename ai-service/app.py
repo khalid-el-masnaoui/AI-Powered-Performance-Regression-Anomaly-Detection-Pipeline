@@ -31,3 +31,21 @@ def severity(score):
         return "MEDIUM"
 
     return "LOW"
+
+
+# --------------------------------------------------------
+# AI Regression Anomaly Detection
+# --------------------------------------------------------
+
+@app.route("/detect", methods=["POST"])
+def detect():
+
+    data = request.json
+
+    route = data["route"]
+
+    history = data["history"]
+
+    current = data["current"]
+
+    baseline = data["baseline"]
