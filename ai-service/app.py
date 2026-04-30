@@ -97,3 +97,23 @@ def detect():
     )
 
     model.fit(X.values)
+
+    # ----------------------------------------------------
+    # Current observation
+    # ----------------------------------------------------
+
+    current_vector = [[
+
+        current.get("p95", 0),
+
+        current.get("p99", 0),
+
+        current.get("avg", 0),
+
+        current.get("throughput", 0),
+
+        #current.get("error_rate", 0),
+
+        current.get("max_latency", 0)
+
+    ]]
