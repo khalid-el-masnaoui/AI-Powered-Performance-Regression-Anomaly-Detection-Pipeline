@@ -84,3 +84,14 @@ def detect():
     ]
 
     X = df[features]
+
+    #print(f"Feature data for {route}:", X, flush=True)
+
+    # ----------------------------------------------------
+    # Train anomaly model
+    # ----------------------------------------------------
+
+    model = IsolationForest(
+        contamination=0.1,
+        random_state=42
+    )
