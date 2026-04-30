@@ -66,3 +66,21 @@ def detect():
 
     print(f"Received data for {route} - history length: {len(history)}", flush=True)
     
+    # ----------------------------------------------------
+    # Historical dataframe
+    # ----------------------------------------------------
+
+    #print(f"History for {route}:", history, flush=True)
+    
+    df = pd.DataFrame(history)
+
+    features = [
+        "p95",
+        "p99",
+        "avg",
+        "throughput",
+        #"error_rate",
+        "max_latency"
+    ]
+
+    X = df[features]
