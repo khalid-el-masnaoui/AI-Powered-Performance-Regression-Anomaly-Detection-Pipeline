@@ -49,3 +49,20 @@ def detect():
     current = data["current"]
 
     baseline = data["baseline"]
+
+    # ----------------------------------------------------
+    # Need enough history
+    # ----------------------------------------------------
+
+    if len(history) < 10:
+
+        print(f"Not enough history for {route}", flush=True)
+
+        return jsonify({
+            "status": "not-enough-history",
+            "anomaly_score": 0,
+            "regression": False
+        })
+
+    print(f"Received data for {route} - history length: {len(history)}", flush=True)
+    
