@@ -166,3 +166,22 @@ def detect():
         1,
         abs(zscore) / 5
     )
+
+    return jsonify({
+
+        "route": route,
+
+        "regression": bool(regression),
+
+        "anomaly_score": fmt(anomaly_score),
+
+        "zscore": fmt(zscore),
+
+        "confidence": fmt(confidence),
+
+        "severity": severity(anomaly_score),
+
+        "current": current,
+
+        "baseline": baseline
+    })
