@@ -136,3 +136,9 @@ def detect():
             abs(raw_score)
         )
     )
+
+    regression = prediction == -1
+
+    print(f"Raw anomaly score for {route}: {raw_score}", flush=True)
+    print(f"prediction for {route}: {prediction}", flush=True)
+    print(f"Anomaly detection for {route} - score: {anomaly_score}, regression: {regression}", flush=True)
