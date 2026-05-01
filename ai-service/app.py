@@ -117,3 +117,11 @@ def detect():
         current.get("max_latency", 0)
 
     ]]
+
+    # ----------------------------------------------------
+    # Predict anomaly
+    # ----------------------------------------------------
+
+    #print(f"Current vector for {route}:", current_vector, flush=True)
+
+    prediction = model.predict(current_vector)[0]
