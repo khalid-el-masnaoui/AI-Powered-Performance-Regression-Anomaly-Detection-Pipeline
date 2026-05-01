@@ -142,3 +142,18 @@ def detect():
     print(f"Raw anomaly score for {route}: {raw_score}", flush=True)
     print(f"prediction for {route}: {prediction}", flush=True)
     print(f"Anomaly detection for {route} - score: {anomaly_score}, regression: {regression}", flush=True)
+
+    # ----------------------------------------------------
+    # Additional z-score
+    # ----------------------------------------------------
+
+    p95_mean = df["p95"].mean()
+
+    p95_std = df["p95"].std()
+
+    if p95_std == 0:
+        zscore = 0
+    else:
+        zscore = (
+            current["p95"] - p95_mean
+        ) / p95_std
