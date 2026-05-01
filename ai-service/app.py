@@ -125,3 +125,14 @@ def detect():
     #print(f"Current vector for {route}:", current_vector, flush=True)
 
     prediction = model.predict(current_vector)[0]
+
+    raw_score = model.decision_function(current_vector)[0]
+
+    # normalize
+    anomaly_score = min(
+        1,
+        max(
+            0,
+            abs(raw_score)
+        )
+    )
