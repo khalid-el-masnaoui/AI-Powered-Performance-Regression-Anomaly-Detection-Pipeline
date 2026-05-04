@@ -10,3 +10,14 @@ services:
       - ./spx-data:/tmp/spx
     depends_on:
       - php
+  php:
+    build:
+      context: ./php
+      dockerfile: php.dockerfile
+    volumes:
+      - ./src:/var/www/html
+      - ./spx-data:/tmp/spx
+    environment:
+      PHP_FPM_PM_STATUS_PATH: /status
+    depends_on:
+      - redis
