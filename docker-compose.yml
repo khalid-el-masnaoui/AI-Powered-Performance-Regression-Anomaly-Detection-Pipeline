@@ -1,1 +1,12 @@
 version: '3.8'
+services:
+  nginx:
+    image: nginx:stable-alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - ./src:/var/www/html
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./spx-data:/tmp/spx
+    depends_on:
+      - php
