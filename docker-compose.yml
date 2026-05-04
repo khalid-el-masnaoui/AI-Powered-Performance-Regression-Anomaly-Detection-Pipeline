@@ -53,3 +53,10 @@ services:
       PHP_FPM_SCRAPE_URI: "tcp://php:9000/status"
     ports:
       - "9253:9253"
+
+  nginx-exporter:
+    image: nginx/nginx-prometheus-exporter
+    command:
+      - "-nginx.scrape-uri=http://nginx/nginx_status"
+    ports:
+      - "9113:9113"
