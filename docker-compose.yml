@@ -46,3 +46,10 @@ services:
     image: grafana/grafana
     ports:
       - "3000:3000"
+
+  php-fpm-exporter:
+    image: hipages/php-fpm_exporter
+    environment:
+      PHP_FPM_SCRAPE_URI: "tcp://php:9000/status"
+    ports:
+      - "9253:9253"
