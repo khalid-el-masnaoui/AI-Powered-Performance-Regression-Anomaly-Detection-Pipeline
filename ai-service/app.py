@@ -92,7 +92,7 @@ def detect():
     # ----------------------------------------------------
 
     model = IsolationForest(
-        contamination=0.1,
+        contamination=0.1, #value to tinker with till you find "your" perfect fit based on your data
         random_state=42
     )
 
