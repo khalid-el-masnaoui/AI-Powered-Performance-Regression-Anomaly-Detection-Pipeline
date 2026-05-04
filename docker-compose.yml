@@ -32,3 +32,12 @@ services:
       - ./prometheus/alerts.yml:/etc/prometheus/alerts.yml
     ports:
       - "9090:9090"
+
+  alertmanager:
+    build:
+      context: ./alertmanager
+      dockerfile: alertmanager.dockerfile
+    ports:
+      - "9093:9093"
+    env_file:
+      - .env
