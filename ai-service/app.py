@@ -185,3 +185,8 @@ def detect():
 
         "baseline": baseline
     })
+
+
+@app.route("/health")
+def health():
+    return jsonify({"status": "ok"})
