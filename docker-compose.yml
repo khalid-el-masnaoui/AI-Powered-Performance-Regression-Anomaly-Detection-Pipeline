@@ -21,3 +21,6 @@ services:
       PHP_FPM_PM_STATUS_PATH: /status
     depends_on:
       - redis
+
+  redis:
+    image: redis:alpine
