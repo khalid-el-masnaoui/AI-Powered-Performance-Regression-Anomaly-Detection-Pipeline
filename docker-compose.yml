@@ -60,3 +60,10 @@ services:
       - "-nginx.scrape-uri=http://nginx/nginx_status"
     ports:
       - "9113:9113"
+
+  ai-service:
+    build:
+      context: ./ai-service
+      dockerfile: ai-regression-service.dockerfile
+    ports:
+      - "5200:5200"
