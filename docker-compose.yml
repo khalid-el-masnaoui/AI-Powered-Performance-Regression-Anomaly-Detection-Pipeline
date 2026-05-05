@@ -67,3 +67,18 @@ services:
       dockerfile: ai-regression-service.dockerfile
     ports:
       - "5200:5200"
+
+  regression-service:
+    build:
+      context: ./regression-service
+      dockerfile: regression-service.dockerfile
+    ports:
+      - "8090:8090"
+    env_file:
+      - .env
+    depends_on:
+      - ai-service
+      - redis
+      - prometheus
+      - alertmanager
+      - report-service
