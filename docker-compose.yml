@@ -82,3 +82,13 @@ services:
       - prometheus
       - alertmanager
       - report-service
+
+  report-service:
+    build:
+        context: ./report-service
+        dockerfile: report-service.dockerfile
+    ports:
+      - "5100:5000"
+    volumes:
+      - ./reports:/reports
+  
