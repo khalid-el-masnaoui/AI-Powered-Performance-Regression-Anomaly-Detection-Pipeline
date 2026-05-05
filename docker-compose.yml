@@ -92,3 +92,14 @@ services:
     volumes:
       - ./reports:/reports
   
+  k6:
+    build:
+        context: ./k6
+        dockerfile: k6.dockerfile
+    volumes:
+      - ./k6:/scripts
+    depends_on:
+    - nginx
+    env_file:
+      - .env
+    command: ["/scripts/entrypoint.sh"]
