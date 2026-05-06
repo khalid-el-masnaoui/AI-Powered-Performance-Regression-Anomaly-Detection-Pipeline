@@ -13,3 +13,7 @@ This repository combines:
 
 
 This project is intended as a practical demo of how to wire **PHP request metrics**, **alerting**,  **dynamic profiler activation**,  **automatic regression detection** using **AI-powered anaomaly detection service** and **historical trend analysis & tracking** together into a reproducible Docker-based performance observability & automated regression detection pipeline.
+
+## Summary
+
+This project is designed to detect performance regressions automatically by combining metrics, historical trends, AI anomaly scoring, and profiling.
