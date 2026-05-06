@@ -17,3 +17,13 @@ This project is intended as a practical demo of how to wire **PHP request metric
 ## Summary
 
 This project is designed to detect performance regressions automatically by combining metrics, historical trends, AI anomaly scoring, and profiling.
+
+Instead of using fixed thresholds like `p95 > baseline * 1.3`, it learns from historical performance patterns and computes:
+
+- **anomaly score**
+- **regression decision**
+- **severity**
+- **confidence score**
+- **z-score based on the route history**
+
+It also triggers SPX profiling for slow endpoints and generates PDF reports for baselines and detected regressions.
