@@ -10,3 +10,6 @@ This repository combines:
 - 🤖 AI-Powered anomaly and regression detection using historical metrics
 - 📄 PDF reporting of baselines and regressions
 - 🧪 k6 load testing workflows for baseline and regression simulation
+
+
+This project is intended as a practical demo of how to wire **PHP request metrics**, **alerting**,  **dynamic profiler activation**,  **automatic regression detection** using **AI-powered anaomaly detection service** and **historical trend analysis & tracking** together into a reproducible Docker-based performance observability & automated regression detection pipeline.
