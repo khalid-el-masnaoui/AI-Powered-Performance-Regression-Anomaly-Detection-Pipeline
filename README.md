@@ -100,3 +100,9 @@ cp .env.example .env
 ```
 
 Update values as needed, especially **`SLACK_WEBHOOK`**.
+
+**2. Start the full stack**
+
+```bash
+docker compose up -d --build
+```
