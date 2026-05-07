@@ -124,3 +124,16 @@ The k6 service is configured to:
 - collect Prometheus metrics
 - send baseline snapshots to `regression-service`
 - simulate slow requests (gradual degradations & spikes)
+
+**Note**: k6 traffic is automatically triggered the first time the application is up (using `k6/entrypoint.sh`), so you do not need to do anything. 
+You can however manually generate traffic locally using `testing/makefile` or Run the k6 entrypoint directly:
+
+```bash
+# Run the k6 entrypoint directly
+docker compose run --rm k6
+docker compose logs -f k6 # follow logs
+
+# or locally
+cd testing/
+make test-ai-anomaly-detection
+```
