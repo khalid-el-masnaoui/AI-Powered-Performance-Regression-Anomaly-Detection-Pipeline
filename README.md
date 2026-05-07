@@ -55,3 +55,7 @@ The stack is composed of the following services:
 4. Alertmanager POSTs matched alerts to **`regression-service`** `/alert`
 5. **`regression-service`** queries Prometheus and history, forwards data to **`ai-service`**
 6. **`ai-service`** returns anomaly/regression verdict
+7. If regression is detected:
+   - SPX profiling is triggered
+   - Slack notification is sent
+   - PDF regression report is generated
