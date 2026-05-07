@@ -79,3 +79,11 @@ The stack is composed of the following services:
 └── testing/                    # Test utilities
 └──.env.example                 #sample environment configuration
 ```
+
+## Prerequisites
+
+- Docker
+- Docker Compose
+
+Optional:
+- `K6` & `jq` (only if need to test locally with `/testing`)
