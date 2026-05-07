@@ -59,3 +59,23 @@ The stack is composed of the following services:
    - SPX profiling is triggered
    - Slack notification is sent
    - PDF regression report is generated
+
+
+## Project Structure
+
+```bash
+├── docker-compose.yml          # Main orchestration
+├── alertmanager/               # Alert routing
+├── k6/                         # Load testing scripts
+├── nginx/                      # Web server config
+├── php/                        # PHP-FPM setup
+├── prometheus/                 # Metrics config
+├── regression-service/         # Python regression detector
+├── ai-service/                 # Python AI-based anomaly detection service
+├── report-service/             # Python PDF generator
+├── src/                        # PHP application
+├── reports/                    # Generated PDFs
+├── spx-data/                   # Flamegraph storage
+└── testing/                    # Test utilities
+└──.env.example                 #sample environment configuration
+```
