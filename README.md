@@ -46,3 +46,12 @@ The stack is composed of the following services:
 - **`regression-service`** — Regression analysis service with `/baseline`, `/alert`, `/check`
 - **`report-service`** — PDF report generator for baselines and regressions
 - **`k6`** — Load testing and baseline generation runner
+
+### Data flow
+
+1. k6 or users hit the PHP app through Nginx
+2. PHP app records Prometheus metrics
+3. Prometheus scrapes metrics and evaluates alerts
+4. Alertmanager POSTs matched alerts to **`regression-service`** `/alert`
+5. **`regression-service`** queries Prometheus and history, forwards data to **`ai-service`**
+6. **`ai-service`** returns anomaly/regression verdict
