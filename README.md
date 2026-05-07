@@ -87,3 +87,16 @@ The stack is composed of the following services:
 
 Optional:
 - `K6` & `jq` (only if need to test locally with `/testing`)
+
+
+## Quick start
+
+**1. Prepare environment**
+
+Copy the example env file:
+
+```bash
+cp .env.example .env
+```
+
+Update values as needed, especially **`SLACK_WEBHOOK`**.
