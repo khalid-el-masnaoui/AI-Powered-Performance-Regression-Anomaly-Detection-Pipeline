@@ -106,3 +106,11 @@ Update values as needed, especially **`SLACK_WEBHOOK`**.
 ```bash
 docker compose up -d --build
 ```
+
+**3. Validate services**
+
+```bash
+curl http://localhost:5200/health # ai anomaly detection service
+curl http://localhost:8090/health # regression service
+curl http://localhost:5000/health # report service
+```
