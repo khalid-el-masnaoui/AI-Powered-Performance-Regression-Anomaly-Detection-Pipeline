@@ -114,3 +114,13 @@ curl http://localhost:5200/health # ai anomaly detection service
 curl http://localhost:8090/health # regression service
 curl http://localhost:5000/health # report service
 ```
+
+**4. Generate baseline and run test scenarios**
+
+The k6 service is configured to:
+
+- warm up the app
+- run baseline traffic
+- collect Prometheus metrics
+- send baseline snapshots to `regression-service`
+- simulate slow requests (gradual degradations & spikes)
