@@ -208,3 +208,18 @@ The regression service stores baseline metrics in Redis using keys like `baselin
 Alert rule: `SlowEndpoint` triggers when p95 latency > 1s for any route.
 
 `Alertmanager` sends alerts (based on `P95`) to the regression service at `/alert`
+
+### Regression service
+
+Endpoints:
+
+- `POST /baseline` — store route baseline metrics in Redis and generate baseline PDF
+- `POST /alert` — handle incoming Prometheus alerts, compute current metrics, query history, and run AI detection
+- `POST /check` — manually evaluate all stored baselines against current Prometheus metrics
+- `GET /health` — health check
+
+If a regression is detected, the service:
+
+- triggers SPX profiling for the affected route
+- sends Slack notification if `SLACK_WEBHOOK` is configured
+- generates a PDF regression report via `report-service`
