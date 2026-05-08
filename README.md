@@ -150,7 +150,7 @@ make test-ai-anomaly-detection
 
 ## Endpoints & Routes
 
-### Service Endpoints
+### Service URLs
 | Service | URL | Notes |
 |---|---|---|
 | PHP App | http://localhost:8080 | Main web app routes and `/flamegraphs` |
@@ -174,3 +174,24 @@ make test-ai-anomaly-detection
 - `/metrics` — Prometheus metrics endpoint
 - `/flamegraphs` — searchable SPX flamegraph list
 - `/spx-data/` — raw SPX JSON profile output
+
+
+### Services Endpoints
+
+#### AI anomaly service (`:5200`)
+
+- `POST /detect` — evaluate route performance data
+- `GET /health`
+
+#### Regression Service (`:8090`)
+
+- `POST /baseline` - Store baseline metrics
+- `POST /alert` - Handle Prometheus alerts
+- `POST /check` - Manual regression check
+- `GET /health` - Health check
+
+#### Report Service (`:5100`)
+
+- `POST /generate-baseline` - Generate baseline PDF report
+- `POST /generate` - Generate regression PDF report
+- `GET /health` - Health check
