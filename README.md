@@ -302,3 +302,11 @@ next request → SPX profiling ON
          ↓
 flamegraph generated
 ```
+
+### Baseline generation workflow
+
+1. k6 runs baseline traffic through `/` and `/api/users`
+2. Prometheus scrapes the resulting metrics
+3. `k6/entrypoint.sh` queries Prometheus for `p95`, `p99`, `avg`, `error_rate`, `max_latency`, and `throughput`
+4. Baseline data is posted to `regression-service` `/baseline`
+5. `report-service` generates a baseline PDF and trend chart
