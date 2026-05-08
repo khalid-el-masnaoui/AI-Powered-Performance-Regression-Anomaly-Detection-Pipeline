@@ -202,3 +202,9 @@ make test-ai-anomaly-detection
 ### Baseline storage
 
 The regression service stores baseline metrics in Redis using keys like `baseline:/api/users`.
+
+### Alert handling
+
+Alert rule: `SlowEndpoint` triggers when p95 latency > 1s for any route.
+
+`Alertmanager` sends alerts (based on `P95`) to the regression service at `/alert`
