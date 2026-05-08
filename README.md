@@ -168,3 +168,9 @@ make test-ai-anomaly-detection
 - `/` — home route
 - `/api/users` — sample API route
 - `/api/users?delay=<seconds>` — simulate slow requests
+
+### Metrics and profiling
+
+- `/metrics` — Prometheus metrics endpoint
+- `/flamegraphs` — searchable SPX flamegraph list
+- `/spx-data/` — raw SPX JSON profile output
