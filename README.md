@@ -161,3 +161,10 @@ make test-ai-anomaly-detection
 | AI anomaly service | http://localhost:5200 | evaluate route performance data |
 | Report Service | http://localhost:5100 | PDF generation endpoints |
 | SPX Web UI | http://localhost:8080/?SPX_KEY=dev&SPX_UI=1&SPX_UI_URI=/ | PHP-SPX Profiling Web UI
+
+
+### Application routes
+
+- `/` — home route
+- `/api/users` — sample API route
+- `/api/users?delay=<seconds>` — simulate slow requests
