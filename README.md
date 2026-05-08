@@ -271,3 +271,34 @@ Important variables:
 - `REPORT_URL` — report-service URL
 - `REGRESSION_SERVICE_URL` — regression-service URL
 - `SLACK_WEBHOOK` — Slack webhook for alert notifications
+
+
+## Full Workflow
+
+### General
+
+k6 simulates:
+
+- baseline traffic to generate the baseline
+- slow endpoint traffic (?delay=) to trigger a regression
+
+**Note**: k6 traffic is automatically triggered the first time the application is up (using `k6/entrypoint.sh`). You can also generate traffic locally using `testing/makefile`
+
+```bash
+0-15s    → warmup phase with 20 requests
+15s-20s  → generate baseline
+20-50s   → metrics accumulate
+50-80s  → p95 increases
+~80s    → alert enters "pending"
+~140s   → alert fires
+         ↓
+         regression anomaly detected  →  AI Service
+           ↓                                    ├── anomaly scoring
+         slack alert                            ├── historical tracking
+           ↓                                    ├── charts
+         regression report generated            └── PDF reports
+             ↓
+next request → SPX profiling ON
+         ↓
+flamegraph generated
+```
