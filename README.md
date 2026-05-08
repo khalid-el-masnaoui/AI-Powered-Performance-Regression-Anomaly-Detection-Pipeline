@@ -223,3 +223,27 @@ If a regression is detected, the service:
 - triggers SPX profiling for the affected route
 - sends Slack notification if `SLACK_WEBHOOK` is configured
 - generates a PDF regression report via `report-service`
+
+### AI anomaly service
+
+The AI service exposes:
+
+- `POST /detect` — evaluate route performance data
+- `GET /health`
+
+It builds a historical dataset from Prometheus time series and uses **`IsolationForest`** ML Model to classify the current observation.
+
+Features used for anomaly detection:
+
+- `p95`
+- `p99`
+- `avg`
+- `throughput`
+- `max_latency`
+
+It also computes:
+
+- anomaly score
+- z-score for p95
+- confidence score
+- severity category (`LOW`, `MEDIUM`, `HIGH`, `CRITICAL`)
