@@ -195,3 +195,10 @@ make test-ai-anomaly-detection
 - `POST /generate-baseline` - Generate baseline PDF report
 - `POST /generate` - Generate regression PDF report
 - `GET /health` - Health check
+
+
+## How it works
+
+### Baseline storage
+
+The regression service stores baseline metrics in Redis using keys like `baseline:/api/users`.
