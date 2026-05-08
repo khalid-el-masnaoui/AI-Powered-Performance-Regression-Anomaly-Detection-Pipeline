@@ -256,3 +256,18 @@ It also computes:
 - The file `src/spx_prepend.php` connects to Redis and enables profiling only when `spx:{route}` is set.
 
 - The flamegraph browser is served by `src/flamegraphs.php` and static JSON files under `/spx-data`.
+
+
+
+## Configuration
+
+Use **`.env`** to configure runtime settings for the PHP app, k6, and services.
+
+Important variables:
+
+- `REDIS_HOST` — Redis service
+- `NGINX_URL` — Nginx URL used by k6 and scripts
+- `PROM_URL` — Prometheus URL used by k6
+- `REPORT_URL` — report-service URL
+- `REGRESSION_SERVICE_URL` — regression-service URL
+- `SLACK_WEBHOOK` — Slack webhook for alert notifications
