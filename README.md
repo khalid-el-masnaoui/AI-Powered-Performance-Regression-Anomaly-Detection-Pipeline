@@ -310,3 +310,16 @@ flamegraph generated
 3. `k6/entrypoint.sh` queries Prometheus for `p95`, `p99`, `avg`, `error_rate`, `max_latency`, and `throughput`
 4. Baseline data is posted to `regression-service` `/baseline`
 5. `report-service` generates a baseline PDF and trend chart
+
+### Regression alert workflow
+
+1. Prometheus fires `SlowEndpoint` when `p95 > 1s`
+2. Alertmanager sends the alert payload to `regression-service` `/alert`
+3. `regression-service` loads the stored baseline from Redis
+4. It queries current metrics and historical trends from Prometheus
+5. It sends the data to `ai-service` `/detect`
+6. AI returns regression anomaly decision and severity
+7. If regression is present:
+   - SPX profiling is triggered for the route
+   - Slack notification is generated
+   - Regression PDF report is generated
