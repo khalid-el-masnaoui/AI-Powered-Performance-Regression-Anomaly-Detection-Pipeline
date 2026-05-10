@@ -405,3 +405,13 @@ It Helps detecting outliers by identify extreme values that fall far from the av
 **Note**:
 - Use `Z-score` for univariate, normally distributed data where you need high interpretability.
 - Use `decision_function` for multivariate, high-dimensional, or complex data that does not follow a normal distribution
+
+### Testing Your Model
+To properly test your AI anomaly detection system, your k6 tests should simulate:
+
+- Normal stable traffic
+- Gradual degradation
+- Sudden regression spike
+- Throughput collapse
+- Error-rate spikes
+- Latency jitter / instability
