@@ -452,3 +452,11 @@ You should monitor:
 **Note 3**: Configure `IsolationForest` ML model based on your data: 
 - Visualize the history data, and tinker with the model parameters (mainly `contamination`) till you find "your" perfect fit based on your data.
 - You should test many values, check your history data, the top 10~50 flagged points by your model (higher abnormality).
+
+
+
+## Notes
+
+- The current AI model uses **`IsolationForest`** for anomaly detection.
+- The PHP app stores SPX trigger flags in Redis, enabling profiling only for flagged routes.
+- The repo includes both a direct `k6` baseline script and a separate slow request simulation script.
