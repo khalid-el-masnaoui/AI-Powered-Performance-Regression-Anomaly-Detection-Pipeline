@@ -376,3 +376,32 @@ The regression report contains:
     <img src="images/slack_alert.png" width="40%" /> 
     <img src="images/regression_chart.png" width="40%" /> 
 </p>
+
+## More On The AI-Anomaly Detection Service
+
+### IsolationForest Machine-Learning Model
+
+**1 model.decision_function(X)**: 
+It Returns the anomaly score of the input samples. Scores are shifted so that negative values indicate outliers and positive values indicate inliers.
+
+
+**2.model.predict(X)**:
+It returns an array of integers representing whether each sample is classified as an `inlier` or an `outlier`.  
+The predict method determines these labels by comparing the calculated anomaly score of each sample against a predefined threshold: 
+
+- If the sample's score is above the threshold, it is labeled 1 => `inlier`.
+- If the sample's score is below the threshold, it is labeled -1 => `outlier`. 
+
+**3. z-score**:
+A z-score (or standard score) measures how many standard deviations a specific data point is from the mean. It Tells you how far, and in what direction, a variable deviates from the mean.
+
+It Helps detecting outliers by identify extreme values that fall far from the average.
+
+- `Z=0` => Data point is exactly average.
+- `Z>0` => Data point is above average.
+- `Z<0` => Data point is below average.
+- `Z>3` => Often considered an outlier or unusual value.
+
+**Note**:
+- Use `Z-score` for univariate, normally distributed data where you need high interpretability.
+- Use `decision_function` for multivariate, high-dimensional, or complex data that does not follow a normal distribution
