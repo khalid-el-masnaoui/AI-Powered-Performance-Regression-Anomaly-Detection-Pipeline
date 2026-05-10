@@ -446,3 +446,5 @@ You should monitor:
 - history exists
 - traffic patterns vary
 - regressions evolve over time
+
+**Note 2**: The k6 tests in `k6/ai-anomaly-detection.js` and locally in `testing/ai-anomaly-detection.js`  are exactly designed for the above scenarios.
