@@ -415,3 +415,16 @@ To properly test your AI anomaly detection system, your k6 tests should simulate
 - Throughput collapse
 - Error-rate spikes
 - Latency jitter / instability
+
+The goal is NOT just load testing anymore, you are now:
+
+- training anomaly detection
+- validating regression intelligence
+- testing historical learning
+
+| Phase | AI Learns| Anomaly Behavior|
+|------|-----|-----|
+|stable	| normal behavior| anomaly score LOW
+|gradual| degradation	trend changes| anomaly score rising
+|spike	|severe anomaly| CRITICAL anomaly
+|recovery	|return to baseline| anomaly decreases
