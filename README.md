@@ -333,3 +333,18 @@ curl -X POST http://localhost:8090/check
 ```
 
 This will run the same AI-based evaluation for all routes in Redis.
+
+
+## The Tracked Metrics
+
+| Metric      | Why                 |
+| ----------- | ------------------- |
+| p95         | tail latency        |
+| p99         | extreme latency     |
+| avg         | overall performance |
+| rps         | traffic load        |
+| error_rate  | reliability         |
+| max_latency | spikes              |
+| throughput  | system capacity     |
+
+**Note**: The regression anomaly is checked against **`p95`**, **`p99`**, **`avg`**, **`throughput`** and **`max_latency`**.
