@@ -428,3 +428,15 @@ The goal is NOT just load testing anymore, you are now:
 |gradual| degradation	trend changes| anomaly score rising
 |spike	|severe anomaly| CRITICAL anomaly
 |recovery	|return to baseline| anomaly decreases
+
+
+You should monitor:
+
+| Metric	| Expected |
+|-----|------|
+| p95	|increases |
+| p99	|explodes |
+| throughput	| may collapse |
+| error_rate	| may spike |
+| anomaly_score	| rises sharply |
+| zscore	| becomes high |
