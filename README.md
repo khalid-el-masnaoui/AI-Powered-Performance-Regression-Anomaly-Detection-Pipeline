@@ -448,3 +448,7 @@ You should monitor:
 - regressions evolve over time
 
 **Note 2**: The k6 tests in `k6/ai-anomaly-detection.js` and locally in `testing/ai-anomaly-detection.js`  are exactly designed for the above scenarios.
+
+**Note 3**: Configure `IsolationForest` ML model based on your data: 
+- Visualize the history data, and tinker with the model parameters (mainly `contamination`) till you find "your" perfect fit based on your data.
+- You should test many values, check your history data, the top 10~50 flagged points by your model (higher abnormality).
