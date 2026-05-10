@@ -440,3 +440,9 @@ You should monitor:
 | error_rate	| may spike |
 | anomaly_score	| rises sharply |
 | zscore	| becomes high |
+
+
+**Note**:  Your AI only becomes good if:
+- history exists
+- traffic patterns vary
+- regressions evolve over time
