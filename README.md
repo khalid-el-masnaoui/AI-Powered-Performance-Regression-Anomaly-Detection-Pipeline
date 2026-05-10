@@ -460,3 +460,5 @@ You should monitor:
 - The current AI model uses **`IsolationForest`** for anomaly detection.
 - The PHP app stores SPX trigger flags in Redis, enabling profiling only for flagged routes.
 - The repo includes both a direct `k6` baseline script and a separate slow request simulation script.
+- Prometheus alerting is currently based on a fixed p95 threshold; the regression service adds dynamic AI evaluation on top.
+- The sample PHP app is intentionally simple and can be replaced by any PHP codebase.
