@@ -472,3 +472,5 @@ You should monitor:
 - If no baseline exists for a route, `regression-service` will skip evaluation.
 - If Prometheus returns empty data, verify `prometheus.yml` and the scrape targets.
 - If Slack notifications are missing, confirm `SLACK_WEBHOOK` in `.env`.
+- If SPX profiling does not occur, ensure Redis is reachable and the route key `spx:{route}` is being set.
+- If no anomaly regression was detected, check the `IsolationForest` ML model, visualize the history data, and tinker with the model parameters (mainly `contamination`) till you find "your" perfect fit based on your data.
