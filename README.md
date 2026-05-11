@@ -495,3 +495,9 @@ docker exec -it prometheus-spx-redis-1 redis-cli KEYS "*"
 **No alerts firing**:
 - Verify Prometheus can reach `Alertmanager`
 - Check alert rules syntax
+
+**Regression not detected**:
+- Ensure baseline is set
+- Check Prometheus query alignment
+- Verify sufficient traffic volume
+- Check the **`IsolationForest`** ML model, visualize the history data, and tinker with the model parameters (mainly **`contamination`**) till you find "your" perfect fit based on your data.
