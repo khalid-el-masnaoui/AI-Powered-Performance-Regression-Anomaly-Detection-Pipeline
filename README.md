@@ -462,3 +462,13 @@ You should monitor:
 - The repo includes both a direct `k6` baseline script and a separate slow request simulation script.
 - Prometheus alerting is currently based on a fixed p95 threshold; the regression service adds dynamic AI evaluation on top.
 - The sample PHP app is intentionally simple and can be replaced by any PHP codebase.
+
+
+
+## Troubleshooting
+
+### Common Issues
+
+- If no baseline exists for a route, `regression-service` will skip evaluation.
+- If Prometheus returns empty data, verify `prometheus.yml` and the scrape targets.
+- If Slack notifications are missing, confirm `SLACK_WEBHOOK` in `.env`.
