@@ -474,3 +474,10 @@ You should monitor:
 - If Slack notifications are missing, confirm `SLACK_WEBHOOK` in `.env`.
 - If SPX profiling does not occur, ensure Redis is reachable and the route key `spx:{route}` is being set.
 - If no anomaly regression was detected, check the `IsolationForest` ML model, visualize the history data, and tinker with the model parameters (mainly `contamination`) till you find "your" perfect fit based on your data.
+
+**Flamegraphs not generating**:
+```bash
+# Ensure permissions
+chmod -R 777 spx-data
+chmod 33:33 spx-data # 33 is the UID of www-data which php-fpm/nginx runs under
+```
