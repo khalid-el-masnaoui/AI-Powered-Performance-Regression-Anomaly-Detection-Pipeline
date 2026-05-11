@@ -491,3 +491,7 @@ Make sure keys are created in redis
 ```bash
 docker exec -it prometheus-spx-redis-1 redis-cli KEYS "*"
 ```
+
+**No alerts firing**:
+- Verify Prometheus can reach `Alertmanager`
+- Check alert rules syntax
