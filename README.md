@@ -524,3 +524,8 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 - [k6 Documentation](https://k6.io/docs/)
 - [SPX Profiler](https://github.com/NoiseByNorthwest/php-spx)
 - [IsolationForest Machine-Learning Model](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.IsolationForest.html)
+
+
+## License
+
+This repository has no license defined; add one if you want to share or publish it.
