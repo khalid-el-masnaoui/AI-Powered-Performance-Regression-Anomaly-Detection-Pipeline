@@ -516,3 +516,11 @@ docker compose logs -f [service-name]
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
+
+## Additional Resources
+
+- [Prometheus Documentation](https://prometheus.io/docs/)
+- [Grafana Documentation](https://grafana.com/docs/)
+- [k6 Documentation](https://k6.io/docs/)
+- [SPX Profiler](https://github.com/NoiseByNorthwest/php-spx)
+- [IsolationForest Machine-Learning Model](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.IsolationForest.html)
