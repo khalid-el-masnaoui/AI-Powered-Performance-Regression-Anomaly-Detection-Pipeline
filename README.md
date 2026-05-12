@@ -504,3 +504,11 @@ docker exec -it prometheus-spx-redis-1 redis-cli KEYS "*"
 
 **Baseline & Regression reports missing**:
 - If regression reports are missing, confirm `report-service` is healthy at `http://localhost:5100/health`.
+
+
+### Logs
+
+View service logs:
+```bash
+docker compose logs -f [service-name]
+```
