@@ -512,3 +512,7 @@ View service logs:
 ```bash
 docker compose logs -f [service-name]
 ```
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
