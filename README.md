@@ -501,3 +501,6 @@ docker exec -it prometheus-spx-redis-1 redis-cli KEYS "*"
 - Check Prometheus query alignment
 - Verify sufficient traffic volume
 - Check the **`IsolationForest`** ML model, visualize the history data, and tinker with the model parameters (mainly **`contamination`**) till you find "your" perfect fit based on your data.
+
+**Baseline & Regression reports missing**:
+- If regression reports are missing, confirm `report-service` is healthy at `http://localhost:5100/health`.
