@@ -94,7 +94,7 @@ Optional:
 **1. Clone repository**
 
 ```bash
-git clone https://github.com/khalid-el-masnaoui/AI-Powered-Performance-Regression-Anomaly-Detection-Pipeline
+git clone https://github.com/khalid-el-masnaoui/AI-Powered-Performance-Regression-Anomaly-Detection-Pipeline.git
 cd ai-powered-performance-regression-anomaly-detection-pipeline
 ```
 
