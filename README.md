@@ -366,6 +366,7 @@ The regression report contains:
 | confidence           | ✅        |
 | p95/p99/avg          | ✅        |
 | throughput           | ✅        |
+| max latency          | ✅        |
 | error rate           | ✅        |
 | historical trends    | ✅        |
 | charts               | ✅        |
