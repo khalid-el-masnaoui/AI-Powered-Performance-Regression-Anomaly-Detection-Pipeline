@@ -91,7 +91,14 @@ Optional:
 
 ## Quick start
 
-**1. Prepare environment**
+**1. Clone repository**
+
+```bash
+git clone https://github.com/khalid-el-masnaoui/AI-Powered-Performance-Regression-Anomaly-Detection-Pipeline
+cd ai-powered-performance-regression-anomaly-detection-pipeline
+```
+
+**2. Prepare environment**
 
 Copy the example env file:
 
@@ -101,13 +108,13 @@ cp .env.example .env
 
 Update values as needed, especially **`SLACK_WEBHOOK`**.
 
-**2. Start the full stack**
+**3. Start the full stack**
 
 ```bash
 docker compose up -d --build
 ```
 
-**3. Validate services**
+**4. Validate services**
 
 ```bash
 curl http://localhost:5200/health # ai anomaly detection service
@@ -115,7 +122,7 @@ curl http://localhost:8090/health # regression service
 curl http://localhost:5000/health # report service
 ```
 
-**4. Generate baseline and run test scenarios**
+**5. Generate baseline and run test scenarios**
 
 The k6 service is configured to:
 
@@ -138,7 +145,7 @@ cd testing/
 make test-ai-anomaly-detection
 ```
 
-**5. Inspect reports and flamegraphs**
+**6. Inspect reports and flamegraphs**
 
 - Baseline and regression PDFs are written to `./reports`
 - SPX JSON profiles are written to `./spx-data`
@@ -150,7 +157,7 @@ make test-ai-anomaly-detection
 
 ## Endpoints & Routes
 
-### Service URLs
+### Services URLs
 | Service | URL | Notes |
 |---|---|---|
 | PHP App | http://localhost:8080 | Main web app routes and `/flamegraphs` |
