@@ -77,7 +77,7 @@ The stack is composed of the following services:
 ├── reports/                    # Generated PDFs
 ├── spx-data/                   # Flamegraph storage
 └── testing/                    # Test utilities
-└──.env.example                 #sample environment configuration
+└──.env.example                 # Sample environment configuration
 ```
 
 ## Prerequisites
@@ -270,6 +270,7 @@ Important variables:
 - `PROM_URL` — Prometheus URL used by k6
 - `REPORT_URL` — report-service URL
 - `REGRESSION_SERVICE_URL` — regression-service URL
+- `AI_ANOMALY_DETECTION_URL` — AI-anomaly service URL
 - `SLACK_WEBHOOK` — Slack webhook for alert notifications
 
 
