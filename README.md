@@ -14,6 +14,50 @@ This repository combines:
 
 This project is intended as a practical demo of how to wire **PHP request metrics**, **alerting**,  **dynamic profiler activation**,  **automatic regression detection** using **AI-powered anaomaly detection service** and **historical trend analysis & tracking** together into a reproducible Docker-based performance observability & automated regression detection pipeline.
 
+
+## Table Of Contents
+
+- **[Summary](#summary)**
+- **[Architecture](#architecture)**
+    - **[Services](#services)**
+    - **[Data flow](#data-flow)**
+- **[Project Structure](#project-structure)**
+- **[Prerequisites](#prerequisites)**
+- **[Quick start](#quick-start)**
+- **[Endpoints & Routes](#endpoints-routes)**
+    - **[Services URLs](#services-urls)**
+    - **[Application routes](#application-routes)**
+    - **[Metrics and profiling](#metrics-and-profiling)**
+    - **[Services Endpoints](#services-endpoints)**
+        - **[AI anomaly service (`:5200`)](#ai-anomaly-service-5200)**
+        - **[Regression Service (`:8090`)](#regression-service-8090)**
+        - **[Report Service (`:5100`)](#report-service-5100)**
+- **[How it works](#how-it-works)**
+    - **[Baseline storage](#baseline-storage)**
+    - **[Alert handling](#alert-handling)**
+    - **[Regression service](#regression-service)**
+    - **[AI anomaly service](#ai-anomaly-service)**
+    - **[SPX profiling & Flamegraphs](#spx-profiling-flamegraphs)**
+- **[Configuration](#configuration)**
+- **[Full Workflow](#full-workflow)**
+    - **[General](#general)**
+    - **[Baseline generation workflow](#baseline-generation-workflow)**
+    - **[Regression alert workflow](#regression-alert-workflow)**
+    - **[Manual regression check](#manual-regression-check)**
+- **[The Tracked Metrics](#the-tracked-metrics)**
+- **[Reports and Artifacts](#reports-and-artifacts)**
+- **[More On The AI-Anomaly Detection Service](#more-on-the-ai-anomaly-detection-service)**
+    - **[IsolationForest Machine-Learning Model](#isolationforest-machine-learning-model)**
+    - **[Testing Your Model](#testing-your-model)**
+- **[Notes](#notes)**
+- **[Troubleshooting](#troubleshooting)**
+    - **[Common Issues](#common-issues)**
+    - **[Logs](#logs)**
+- **[Contributing](#contributing)**
+- **[Additional Resources](#additional-resources)**
+- **[License](#license)**
+
+
 ## Summary
 
 This project is designed to detect performance regressions automatically by combining metrics, historical trends, AI anomaly scoring, and profiling.
@@ -528,11 +572,11 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## Additional Resources
 
-- [Prometheus Documentation](https://prometheus.io/docs/)
-- [Grafana Documentation](https://grafana.com/docs/)
-- [k6 Documentation](https://k6.io/docs/)
-- [SPX Profiler](https://github.com/NoiseByNorthwest/php-spx)
-- [IsolationForest Machine-Learning Model](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.IsolationForest.html)
+- **[Prometheus Documentation](https://prometheus.io/docs/)
+- **[Grafana Documentation](https://grafana.com/docs/)
+- **[k6 Documentation](https://k6.io/docs/)
+- **[SPX Profiler](https://github.com/NoiseByNorthwest/php-spx)
+- **[IsolationForest Machine-Learning Model](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.IsolationForest.html)
 
 
 ## License
