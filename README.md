@@ -86,12 +86,17 @@ The stack is composed of the following services:
 - `grafana` — Dashboarding (optional, not configured in repo)
 - `php-fpm-exporter` — Exposes PHP-FPM metrics to Prometheus
 - `nginx-exporter` — Exposes Nginx metrics to Prometheus
-- **`ai-service`** — Python AI anomaly detection endpoint at `/detect` using **`IsolationForest`** ML model
+- **`ai-service`** — Python AI anomaly detection endpoint at `/detect` using **`IsolationForest`** Machine-Learning model
 - **`regression-service`** — Regression analysis service with `/baseline`, `/alert`, `/check`
 - **`report-service`** — PDF report generator for baselines and regressions
 - **`k6`** — Load testing and baseline generation runner
 
 ### Data flow
+
+<p float="left" align="middle">
+    <img src="images/ai-anomaly-pipeline.png" width="80%" /> 
+</p>
+
 
 1. k6 or users hit the PHP app through Nginx
 2. PHP app records Prometheus metrics
