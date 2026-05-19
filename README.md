@@ -341,24 +341,9 @@ k6 simulates:
 
 **Note**: k6 traffic is automatically triggered the first time the application is up (using `k6/entrypoint.sh`). You can also generate traffic locally using `testing/makefile`
 
-```bash
-0-15s    → warmup phase with 20 requests
-15s-20s  → generate baseline
-20-50s   → metrics accumulate
-50-80s  → p95 increases
-~80s    → alert enters "pending"
-~140s   → alert fires
-         ↓
-         regression anomaly detected  →  AI Service
-           ↓                                    ├── anomaly scoring
-         slack alert                            ├── historical tracking
-           ↓                                    ├── charts
-         regression report generated            └── PDF reports
-             ↓
-next request → SPX profiling ON
-         ↓
-flamegraph generated
-```
+<p float="left" align="middle">
+    <img src="images/ai-workflow-v2.png" width="80%" /> 
+</p>
 
 ### Baseline generation workflow
 
