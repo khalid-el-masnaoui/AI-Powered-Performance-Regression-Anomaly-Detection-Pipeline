@@ -1,0 +1,691 @@
+[
+  {
+    "timestamp": "20260517_163658",
+    "baseline": {
+      "p95": 0.47790598290598285,
+      "p99": 0.4958091168091168,
+      "avg": 0.2763366603608529,
+      "error_rate": 0,
+      "max_latency": 2403.9880735874,
+      "throughput": 12.872727272727271,
+      "updated_at": 1779035694
+    },
+    "current": {
+      "p95": 19.25,
+      "p99": 19.85,
+      "avg": 5.245,
+      "max_latency": 2877.2381,
+      "throughput": 0.8182,
+      "error_rate": 0
+    },
+    "increase": {
+      "p95": "3927.99%",
+      "p99": "3903.56%",
+      "avg": "1798.05%",
+      "error_rate": "0%",
+      "max_latency": "19.69%",
+      "throughput": "-93.64%"
+    },
+    "ai": {
+      "anomaly_score": 0.0679,
+      "baseline": {
+        "avg": 0.2763366603608529,
+        "error_rate": 0,
+        "max_latency": 2403.9880735874,
+        "p95": 0.47790598290598285,
+        "p99": 0.4958091168091168,
+        "throughput": 12.872727272727271,
+        "updated_at": 1779035694
+      },
+      "confidence": 1.0,
+      "current": {
+        "avg": 5.245,
+        "error_rate": 0,
+        "max_latency": 2877.2381,
+        "p95": 19.25,
+        "p99": 19.85,
+        "throughput": 0.8182
+      },
+      "regression": true,
+      "route": "/api/users",
+      "severity": "LOW",
+      "zscore": 694.8358
+    }
+  },
+  {
+    "timestamp": "20260517_164058",
+    "baseline": {
+      "p95": 0.47790598290598285,
+      "p99": 0.4958091168091168,
+      "avg": 0.2763366603608529,
+      "error_rate": 0,
+      "max_latency": 2403.9880735874,
+      "throughput": 12.872727272727271,
+      "updated_at": 1779035694
+    },
+    "current": {
+      "p95": 28.0,
+      "p99": 29.6,
+      "avg": 5.2619,
+      "max_latency": 3374.9163,
+      "throughput": 0.7273,
+      "error_rate": 0
+    },
+    "increase": {
+      "p95": "5758.89%",
+      "p99": "5870.04%",
+      "avg": "1804.16%",
+      "error_rate": "0%",
+      "max_latency": "40.39%",
+      "throughput": "-94.35%"
+    },
+    "ai": {
+      "anomaly_score": 0.088,
+      "baseline": {
+        "avg": 0.2763366603608529,
+        "error_rate": 0,
+        "max_latency": 2403.9880735874,
+        "p95": 0.47790598290598285,
+        "p99": 0.4958091168091168,
+        "throughput": 12.872727272727271,
+        "updated_at": 1779035694
+      },
+      "confidence": 0.9628,
+      "current": {
+        "avg": 5.2619,
+        "error_rate": 0,
+        "max_latency": 3374.9163,
+        "p95": 28.0,
+        "p99": 29.6,
+        "throughput": 0.7273
+      },
+      "regression": true,
+      "route": "/api/users",
+      "severity": "LOW",
+      "zscore": 4.8138
+    }
+  },
+  {
+    "timestamp": "20260517_202258",
+    "baseline": {
+      "p95": 0.4777507163323782,
+      "p99": 0.4957793696275071,
+      "avg": 0.2758045104076287,
+      "error_rate": 0,
+      "max_latency": 2374.1687524319,
+      "throughput": 12.854545454545454,
+      "updated_at": 1779049219
+    },
+    "current": {
+      "p95": 19.35,
+      "p99": 19.87,
+      "avg": 6.027,
+      "max_latency": 2926.2445,
+      "throughput": 0.3636,
+      "error_rate": 0
+    },
+    "increase": {
+      "p95": "3950.23%",
+      "p99": "3907.83%",
+      "avg": "2085.24%",
+      "error_rate": "0%",
+      "max_latency": "23.25%",
+      "throughput": "-97.17%"
+    },
+    "ai": {
+      "anomaly_score": 0.1626,
+      "baseline": {
+        "avg": 0.2758045104076287,
+        "error_rate": 0,
+        "max_latency": 2374.1687524319,
+        "p95": 0.4777507163323782,
+        "p99": 0.4957793696275071,
+        "throughput": 12.854545454545454,
+        "updated_at": 1779049219
+      },
+      "confidence": 1.0,
+      "current": {
+        "avg": 6.027,
+        "error_rate": 0,
+        "max_latency": 2926.2445,
+        "p95": 19.35,
+        "p99": 19.87,
+        "throughput": 0.3636
+      },
+      "regression": true,
+      "route": "/api/users",
+      "severity": "LOW",
+      "zscore": 491.2892
+    }
+  },
+  {
+    "timestamp": "20260517_222458",
+    "baseline": {
+      "p95": 0.4775070821529745,
+      "p99": 0.4957280453257791,
+      "avg": 0.2766834719857587,
+      "error_rate": 0,
+      "max_latency": 2378.452092886,
+      "throughput": 13.581818181818182,
+      "updated_at": 1779056565
+    },
+    "current": {
+      "p95": 19.2273,
+      "p99": 19.8455,
+      "avg": 5.1185,
+      "max_latency": 2803.8917,
+      "throughput": 0.2545,
+      "error_rate": 0
+    },
+    "increase": {
+      "p95": "3926.60%",
+      "p99": "3903.30%",
+      "avg": "1749.95%",
+      "error_rate": "0%",
+      "max_latency": "17.89%",
+      "throughput": "-98.13%"
+    },
+    "ai": {
+      "anomaly_score": 0.0217,
+      "baseline": {
+        "avg": 0.2766834719857587,
+        "error_rate": 0,
+        "max_latency": 2378.452092886,
+        "p95": 0.4775070821529745,
+        "p99": 0.4957280453257791,
+        "throughput": 13.581818181818182,
+        "updated_at": 1779056565
+      },
+      "confidence": 1.0,
+      "current": {
+        "avg": 5.1185,
+        "error_rate": 0,
+        "max_latency": 2803.8917,
+        "p95": 19.2273,
+        "p99": 19.8455,
+        "throughput": 0.2545
+      },
+      "regression": true,
+      "route": "/api/users",
+      "severity": "LOW",
+      "zscore": 481.9519
+    }
+  },
+  {
+    "timestamp": "20260517_231158",
+    "baseline": {
+      "p95": 0.4778867403314917,
+      "p99": 0.4955773480662984,
+      "avg": 0.2761724211141161,
+      "error_rate": 0,
+      "max_latency": 2386.2539634705,
+      "throughput": 13.436363636363636,
+      "updated_at": 1779059389
+    },
+    "current": {
+      "p95": 19.3,
+      "p99": 19.86,
+      "avg": 5.6486,
+      "max_latency": 2782.9213,
+      "throughput": 0.2727,
+      "error_rate": 0
+    },
+    "increase": {
+      "p95": "3938.61%",
+      "p99": "3907.45%",
+      "avg": "1945.32%",
+      "error_rate": "0%",
+      "max_latency": "16.62%",
+      "throughput": "-97.97%"
+    },
+    "ai": {
+      "anomaly_score": 0.0193,
+      "baseline": {
+        "avg": 0.2761724211141161,
+        "error_rate": 0,
+        "max_latency": 2386.2539634705,
+        "p95": 0.4778867403314917,
+        "p99": 0.4955773480662984,
+        "throughput": 13.436363636363636,
+        "updated_at": 1779059389
+      },
+      "confidence": 1.0,
+      "current": {
+        "avg": 5.6486,
+        "error_rate": 0,
+        "max_latency": 2782.9213,
+        "p95": 19.3,
+        "p99": 19.86,
+        "throughput": 0.2727
+      },
+      "regression": true,
+      "route": "/api/users",
+      "severity": "LOW",
+      "zscore": 530.7318
+    }
+  },
+  {
+    "timestamp": "20260517_234958",
+    "baseline": {
+      "p95": 0.47721407624633433,
+      "p99": 0.4956774193548388,
+      "avg": 0.27383168391982193,
+      "error_rate": 0,
+      "max_latency": 2381.9307119846,
+      "throughput": 12.872727272727271,
+      "updated_at": 1779061664
+    },
+    "current": {
+      "p95": 19.3077,
+      "p99": 19.8615,
+      "avg": 5.7029,
+      "max_latency": 2794.0744,
+      "throughput": 0.2182,
+      "error_rate": 0
+    },
+    "increase": {
+      "p95": "3945.92%",
+      "p99": "3906.94%",
+      "avg": "1982.63%",
+      "error_rate": "0%",
+      "max_latency": "17.30%",
+      "throughput": "-98.30%"
+    },
+    "ai": {
+      "anomaly_score": 0.0126,
+      "baseline": {
+        "avg": 0.27383168391982193,
+        "error_rate": 0,
+        "max_latency": 2381.9307119846,
+        "p95": 0.47721407624633433,
+        "p99": 0.4956774193548388,
+        "throughput": 12.872727272727271,
+        "updated_at": 1779061664
+      },
+      "confidence": 1.0,
+      "current": {
+        "avg": 5.7029,
+        "error_rate": 0,
+        "max_latency": 2794.0744,
+        "p95": 19.3077,
+        "p99": 19.8615,
+        "throughput": 0.2182
+      },
+      "regression": true,
+      "route": "/api/users",
+      "severity": "LOW",
+      "zscore": 46236.3899
+    }
+  },
+  {
+    "timestamp": "20260517_235258",
+    "baseline": {
+      "p95": 0.47721407624633433,
+      "p99": 0.4956774193548388,
+      "avg": 0.27383168391982193,
+      "error_rate": 0,
+      "max_latency": 2381.9307119846,
+      "throughput": 12.872727272727271,
+      "updated_at": 1779061664
+    },
+    "current": {
+      "p95": 27.8333,
+      "p99": 29.5667,
+      "avg": 4.9022,
+      "max_latency": 3112.7157,
+      "throughput": 0.7273,
+      "error_rate": 0
+    },
+    "increase": {
+      "p95": "5732.46%",
+      "p99": "5864.91%",
+      "avg": "1690.22%",
+      "error_rate": "0%",
+      "max_latency": "30.68%",
+      "throughput": "-94.35%"
+    },
+    "ai": {
+      "anomaly_score": 0.0263,
+      "baseline": {
+        "avg": 0.27383168391982193,
+        "error_rate": 0,
+        "max_latency": 2381.9307119846,
+        "p95": 0.47721407624633433,
+        "p99": 0.4956774193548388,
+        "throughput": 12.872727272727271,
+        "updated_at": 1779061664
+      },
+      "confidence": 1.0,
+      "current": {
+        "avg": 4.9022,
+        "error_rate": 0,
+        "max_latency": 3112.7157,
+        "p95": 27.8333,
+        "p99": 29.5667,
+        "throughput": 0.7273
+      },
+      "regression": true,
+      "route": "/api/users",
+      "severity": "LOW",
+      "zscore": 14729.8618
+    }
+  },
+  {
+    "timestamp": "20260518_000758",
+    "baseline": {
+      "p95": 0.47776836158192093,
+      "p99": 0.4957796610169492,
+      "avg": 0.27629982752063975,
+      "error_rate": 0,
+      "max_latency": 2389.2125470638,
+      "throughput": 13.345454545454546,
+      "updated_at": 1779062776
+    },
+    "current": {
+      "p95": 17.64,
+      "p99": 19.528,
+      "avg": 1.8654,
+      "max_latency": 2784.9227,
+      "throughput": 0.7455,
+      "error_rate": 0
+    },
+    "increase": {
+      "p95": "3592.17%",
+      "p99": "3838.85%",
+      "avg": "575.14%",
+      "error_rate": "0%",
+      "max_latency": "16.56%",
+      "throughput": "-94.41%"
+    },
+    "ai": {
+      "anomaly_score": 0.0029,
+      "baseline": {
+        "avg": 0.27629982752063975,
+        "error_rate": 0,
+        "max_latency": 2389.2125470638,
+        "p95": 0.47776836158192093,
+        "p99": 0.4957796610169492,
+        "throughput": 13.345454545454546,
+        "updated_at": 1779062776
+      },
+      "confidence": 1.0,
+      "current": {
+        "avg": 1.8654,
+        "error_rate": 0,
+        "max_latency": 2784.9227,
+        "p95": 17.64,
+        "p99": 19.528,
+        "throughput": 0.7455
+      },
+      "regression": true,
+      "route": "/api/users",
+      "severity": "LOW",
+      "zscore": 69790.123
+    }
+  },
+  {
+    "timestamp": "20260518_001158",
+    "baseline": {
+      "p95": 0.47776836158192093,
+      "p99": 0.4957796610169492,
+      "avg": 0.27629982752063975,
+      "error_rate": 0,
+      "max_latency": 2389.2125470638,
+      "throughput": 13.345454545454546,
+      "updated_at": 1779062776
+    },
+    "current": {
+      "p95": 27.875,
+      "p99": 29.575,
+      "avg": 4.9707,
+      "max_latency": 3237.9341,
+      "throughput": 0.7273,
+      "error_rate": 0
+    },
+    "increase": {
+      "p95": "5734.42%",
+      "p99": "5865.35%",
+      "avg": "1699.02%",
+      "error_rate": "0%",
+      "max_latency": "35.52%",
+      "throughput": "-94.55%"
+    },
+    "ai": {
+      "anomaly_score": 0.0036,
+      "baseline": {
+        "avg": 0.27629982752063975,
+        "error_rate": 0,
+        "max_latency": 2389.2125470638,
+        "p95": 0.47776836158192093,
+        "p99": 0.4957796610169492,
+        "throughput": 13.345454545454546,
+        "updated_at": 1779062776
+      },
+      "confidence": 1.0,
+      "current": {
+        "avg": 4.9707,
+        "error_rate": 0,
+        "max_latency": 3237.9341,
+        "p95": 27.875,
+        "p99": 29.575,
+        "throughput": 0.7273
+      },
+      "regression": true,
+      "route": "/api/users",
+      "severity": "LOW",
+      "zscore": 10703.7469
+    }
+  },
+  {
+    "timestamp": "20260518_005358",
+    "baseline": {
+      "p95": 0.47771137026239063,
+      "p99": 0.49600874635568515,
+      "avg": 0.2726760820798598,
+      "error_rate": 0,
+      "max_latency": 2385.2701687813,
+      "throughput": 12.818181818181818,
+      "updated_at": 1779065510
+    },
+    "current": {
+      "p95": 19.3173,
+      "p99": 19.8635,
+      "avg": 5.7745,
+      "max_latency": 2796.9322,
+      "throughput": 0.4727,
+      "error_rate": 0
+    },
+    "increase": {
+      "p95": "3943.72%",
+      "p99": "3904.67%",
+      "avg": "2017.71%",
+      "error_rate": "0%",
+      "max_latency": "17.26%",
+      "throughput": "-96.31%"
+    },
+    "ai": {
+      "anomaly_score": 0.1862,
+      "baseline": {
+        "avg": 0.2726760820798598,
+        "error_rate": 0,
+        "max_latency": 2385.2701687813,
+        "p95": 0.47771137026239063,
+        "p99": 0.49600874635568515,
+        "throughput": 12.818181818181818,
+        "updated_at": 1779065510
+      },
+      "confidence": 1.0,
+      "current": {
+        "avg": 5.7745,
+        "error_rate": 0,
+        "max_latency": 2796.9322,
+        "p95": 19.3173,
+        "p99": 19.8635,
+        "throughput": 0.4727
+      },
+      "regression": true,
+      "route": "/api/users",
+      "severity": "LOW",
+      "zscore": 243.0232
+    }
+  },
+  {
+    "timestamp": "20260518_011458",
+    "baseline": {
+      "p95": 0.47790436005625875,
+      "p99": 0.4955808720112517,
+      "avg": 0.27721296276429025,
+      "error_rate": 0,
+      "max_latency": 2383.6088261604,
+      "throughput": 12.927272727272726,
+      "updated_at": 1779066787
+    },
+    "current": {
+      "p95": 19.2685,
+      "p99": 19.8537,
+      "avg": 5.4056,
+      "max_latency": 2810.6516,
+      "throughput": 0.6364,
+      "error_rate": 0
+    },
+    "increase": {
+      "p95": "3931.87%",
+      "p99": "3906.15%",
+      "avg": "1849.98%",
+      "error_rate": "0%",
+      "max_latency": "17.92%",
+      "throughput": "-95.08%"
+    },
+    "ai": {
+      "anomaly_score": 0.3214,
+      "baseline": {
+        "avg": 0.27721296276429025,
+        "error_rate": 0,
+        "max_latency": 2383.6088261604,
+        "p95": 0.47790436005625875,
+        "p99": 0.4955808720112517,
+        "throughput": 12.927272727272726,
+        "updated_at": 1779066787
+      },
+      "confidence": 1.0,
+      "current": {
+        "avg": 5.4056,
+        "error_rate": 0,
+        "max_latency": 2810.6516,
+        "p95": 19.2685,
+        "p99": 19.8537,
+        "throughput": 0.6364
+      },
+      "regression": true,
+      "route": "/api/users",
+      "severity": "LOW",
+      "zscore": 18852.9599
+    }
+  },
+  {
+    "timestamp": "20260518_012358",
+    "baseline": {
+      "p95": 0.47790436005625875,
+      "p99": 0.4955808720112517,
+      "avg": 0.27721296276429025,
+      "error_rate": 0,
+      "max_latency": 2383.6088261604,
+      "throughput": 12.927272727272726,
+      "updated_at": 1779066787
+    },
+    "current": {
+      "p95": 28.0,
+      "p99": 29.6,
+      "avg": 5.2444,
+      "max_latency": 4192.3925,
+      "throughput": 0.7273,
+      "error_rate": 0
+    },
+    "increase": {
+      "p95": "5758.91%",
+      "p99": "5872.79%",
+      "avg": "1791.83%",
+      "error_rate": "0%",
+      "max_latency": "75.88%",
+      "throughput": "-94.37%"
+    },
+    "ai": {
+      "anomaly_score": 0.1405,
+      "baseline": {
+        "avg": 0.27721296276429025,
+        "error_rate": 0,
+        "max_latency": 2383.6088261604,
+        "p95": 0.47790436005625875,
+        "p99": 0.4955808720112517,
+        "throughput": 12.927272727272726,
+        "updated_at": 1779066787
+      },
+      "confidence": 1.0,
+      "current": {
+        "avg": 5.2444,
+        "error_rate": 0,
+        "max_latency": 4192.3925,
+        "p95": 28.0,
+        "p99": 29.6,
+        "throughput": 0.7273
+      },
+      "regression": true,
+      "route": "/api/users",
+      "severity": "LOW",
+      "zscore": 10350.5792
+    }
+  },
+  {
+    "timestamp": "20260518_012758",
+    "baseline": {
+      "p95": 0.47790436005625875,
+      "p99": 0.4955808720112517,
+      "avg": 0.27721296276429025,
+      "error_rate": 0,
+      "max_latency": 2383.6088261604,
+      "throughput": 12.927272727272726,
+      "updated_at": 1779066787
+    },
+    "current": {
+      "p95": 28.0,
+      "p99": 29.6,
+      "avg": 5.2965,
+      "max_latency": 4717.1748,
+      "throughput": 0.7273,
+      "error_rate": 0
+    },
+    "increase": {
+      "p95": "5758.91%",
+      "p99": "5872.79%",
+      "avg": "1810.62%",
+      "error_rate": "0%",
+      "max_latency": "97.90%",
+      "throughput": "-94.37%"
+    },
+    "ai": {
+      "anomaly_score": 0.1788,
+      "baseline": {
+        "avg": 0.27721296276429025,
+        "error_rate": 0,
+        "max_latency": 2383.6088261604,
+        "p95": 0.47790436005625875,
+        "p99": 0.4955808720112517,
+        "throughput": 12.927272727272726,
+        "updated_at": 1779066787
+      },
+      "confidence": 0.7617,
+      "current": {
+        "avg": 5.2965,
+        "error_rate": 0,
+        "max_latency": 4717.1748,
+        "p95": 28.0,
+        "p99": 29.6,
+        "throughput": 0.7273
+      },
+      "regression": true,
+      "route": "/api/users",
+      "severity": "LOW",
+      "zscore": 3.8084
+    }
+  }
+]
