@@ -536,9 +536,7 @@ def generate():
                     current.get(metric, 0)
                 ),
 
-                fmt(
-                    increase.get(metric, 0)
-                )
+                increase.get(metric, 0)
             ])
 
         metrics_table = Table(table_data)
