@@ -3,7 +3,7 @@ import { sleep } from 'k6';
 
 export const options = {
   vus: 20,
-  duration: '2m',
+  duration: '10m',
 };
 
 const NGINX_URL = __ENV.NGINX_URL || "http://nginx";

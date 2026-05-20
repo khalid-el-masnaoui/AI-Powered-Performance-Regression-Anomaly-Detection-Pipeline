@@ -8,7 +8,7 @@ export const options = {
     steady_load: {
       executor: 'constant-vus',
       vus: 5,
-      duration: '2m',
+      duration: '90s',
     },
   },
 };
@@ -18,10 +18,10 @@ export default function () {
   http.get(`${NGINX_URL}/`);
   http.get(`${NGINX_URL}/api/users`);
 
-  // Inject slow request every ~3 iterations
-  if (__ITER % 3 === 0) {
-    http.get(`${NGINX_URL}/api/users?delay=18`); // simulate 18s latency
+  // Inject slow request every ~2 iterations
+  if (__ITER % 2 === 0) {
+    http.get(`${NGINX_URL}/api/users?delay=15`); // simulate 15s latency
   }
 
-  sleep(2);
+  sleep(1);
 }
