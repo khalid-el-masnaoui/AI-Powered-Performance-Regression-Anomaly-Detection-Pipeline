@@ -4,6 +4,8 @@ import numpy as np
 import pandas as pd
 
 from sklearn.ensemble import IsolationForest
+from sklearn.model_selection import GridSearchCV
+from sklearn.metrics import make_scorer, f1_score
 
 app = Flask(__name__)
 
@@ -87,12 +89,54 @@ def detect():
 
     #print(f"Feature data for {route}:", X, flush=True)
 
+    #-----------------------------------------------------
+    # Tune Machine-Learning Model
+    # ----------------------------------------------------
+
+    # # 1. Initialize the model
+    # iforest = IsolationForest()
+
+    # # 2. Define the grid of parameters to search exhaustively
+    # param_grid = {
+    #     'n_estimators': [50, 100, 200],
+    #     'max_samples': ['auto', 0.5, 1, 10, 100],
+    #     'contamination': [0.001, 0.01, 0.05, 0.1, 0.2, 0.3, 0.4, 0.5],
+    #     'random_state': [42]
+    # }
+
+    # # 3. Setup GridSearchCV (Assuming you have y_train for scoring)
+    # # If unsupervised, you must define a custom 'scoring' function
+
+    # def scorer_f(estimator, X):   #your own scorer
+    #     return np.mean(estimator.decision_function(X))
+    #     #return np.mean(estimator.score_samples(X))
+
+    # grid_search = GridSearchCV(
+    #     estimator=iforest, 
+    #     param_grid=param_grid, 
+    #     scoring=scorer_f,
+    #     cv=5, 
+    #     n_jobs=-1
+    # )
+
+    # # 4. Fit the grid search
+    # grid_search.fit(X.values)
+
+    # # 5. Access the best parameters
+    # print(f"Best Parameters: {grid_search.best_params_}", flush=True)
+    
+    # return jsonify({
+    #     "regression": False,
+    # })
+
     # ----------------------------------------------------
     # Train anomaly model
     # ----------------------------------------------------
 
     model = IsolationForest(
-        contamination=0.1, #value to tinker with till you find "your" perfect fit based on your data
+        n_estimators=100,
+        max_samples='auto',
+        contamination=0.2,
         random_state=42
     )
 
@@ -118,6 +162,8 @@ def detect():
 
     ]]
 
+    print(f"current Metrics {current_vector}", flush=True)
+
     # ----------------------------------------------------
     # Predict anomaly
     # ----------------------------------------------------
@@ -126,7 +172,39 @@ def detect():
 
     prediction = model.predict(current_vector)[0]
 
-    raw_score = model.decision_function(current_vector)[0]
+    raw_scores = model.decision_function(current_vector)
+
+    #prediction = model.predict(X.values)[0]
+
+    #raw_scores = model.decision_function(X.values)
+
+    # -----------------------------
+    # Sort by most anomalous
+    # -----------------------------
+
+    # Sort indices in ascending order (most negative/anomalous first)
+    sorted_indices = np.argsort(raw_scores)
+
+    # Create a DataFrame to view the sorted scores alongside original data
+    anomaly_results = pd.DataFrame({
+        'Anomaly_Score': raw_scores[sorted_indices],
+        'Original_Index': sorted_indices
+    })
+
+
+    # -----------------------------
+    # Display results
+    # -----------------------------
+    
+    # View the top 5 most anomalous points
+    print(anomaly_results.head(50), flush=True)
+
+    # To extract the actual anomalous rows from your original dataset:
+    top_5_anomalies = X.iloc[sorted_indices[:5]]
+    print(top_5_anomalies, flush=True)
+
+
+    raw_score = raw_scores[0]
 
     # normalize
     anomaly_score = min(
