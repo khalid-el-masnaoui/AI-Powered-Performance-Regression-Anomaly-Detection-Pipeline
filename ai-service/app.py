@@ -136,7 +136,7 @@ def detect():
     model = IsolationForest(
         n_estimators=100,
         max_samples='auto',
-        contamination=0.2,
+        contamination=0.35,
         random_state=42
     )
 
