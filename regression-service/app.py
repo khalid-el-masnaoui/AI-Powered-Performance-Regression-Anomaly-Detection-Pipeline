@@ -339,7 +339,7 @@ def query_history(route):
                 "query": query,
                 "start": time.time() - 3600,
                 "end": time.time(),
-                "step": 60
+                "step": 20
             }
         )
 
@@ -605,7 +605,7 @@ def build_slack_payload(route, result):
                     {
                         "title": "p95 Increase",
                         "value":
-                            f"{fmt(increase.get('p95', 0))}%",
+                            increase.get('p95', '0.00%'),
                         "short": True
                     },
 
@@ -630,7 +630,7 @@ def build_slack_payload(route, result):
                     {
                         "title": "p99 Increase",
                         "value":
-                            f"{fmt(increase.get('p99', 0))}%",
+                            increase.get('p99', '0.00%'),
                         "short": True
                     },
 
@@ -655,7 +655,7 @@ def build_slack_payload(route, result):
                     {
                         "title": "AVG Increase",
                         "value":
-                            f"{fmt(increase.get('avg', 0))}%",
+                            increase.get('avg', '0.00%'),
                         "short": True
                     },
 
@@ -680,7 +680,7 @@ def build_slack_payload(route, result):
                     {
                         "title": "Throughput Change",
                         "value":
-                            f"{fmt(increase.get('throughput', 0))}%",
+                            increase.get('throughput', '0.00%'),
                         "short": True
                     },
 
@@ -705,7 +705,7 @@ def build_slack_payload(route, result):
                     {
                         "title": "Error Rate Change",
                         "value":
-                            f"{fmt(increase.get('error_rate', 0))}%",
+                            increase.get('error_rate', '0.00%'),
                         "short": True
                     },
 
@@ -730,7 +730,7 @@ def build_slack_payload(route, result):
                     {
                         "title": "Max Latency Change",
                         "value":
-                            f"{fmt(increase.get('max_latency', 0))}%",
+                            increase.get('max_latency', '0.00%'),
                         "short": True
                     },
                 ],
